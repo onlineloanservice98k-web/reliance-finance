@@ -2,15 +2,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Check Status - Finance Demo</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Check Status - Reliance Finance Demo</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
+
 <body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <header class="top-header">
 
@@ -18,20 +28,43 @@
 
         <div class="finance-logo">
             <span>R</span>
-            <small>▮▮▮</small>
+            <small>FINANCE</small>
         </div>
 
-        <div>
-            <h1>Reliance Finance - Demo</h1>
-            <p>Loan Information & Services</p>
+
+        <div class="logo-text">
+
+            <h1>
+                Reliance Finance - Demo
+            </h1>
+
+            <p>
+                Loan Information &amp; Services
+            </p>
+
         </div>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button"
+            aria-label="Open Menu">
+
+            ☰
+
+        </button>
 
     </div>
 
 </header>
 
 
-<nav class="main-nav">
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<nav class="main-nav" id="mainNav">
 
     <a href="index.html">
         Home
@@ -56,64 +89,100 @@
 </nav>
 
 
-<section class="status-section">
+
+<!-- =========================================
+     STATUS SECTION
+========================================= -->
+
+<main class="status-section">
+
 
     <div class="status-box">
 
+
         <h2>
-            Check Your Loan Status
+            Check Application Status
         </h2>
+
 
         <p>
             Enter your registered mobile number
+            to check application information.
         </p>
+
 
         <input
             type="tel"
             id="mobileNumber"
-            placeholder="Enter 10 Digit Mobile Number"
+            placeholder="Enter 10 digit mobile number"
             maxlength="10"
             inputmode="numeric"
-        >
+            autocomplete="tel">
+
 
         <button
             type="button"
-            onclick="checkStatus()"
-        >
+            onclick="checkStatus()">
+
             Check Status
+
         </button>
+
 
         <div id="statusResult"></div>
 
+
     </div>
 
-</section>
+
+</main>
 
 
-<section class="admin-notice">
 
-    <p>
+<!-- =========================================
+     DEMO NOTICE
+========================================= -->
 
-        <b>Finance Demo:</b>
+<div class="admin-notice">
 
-        This page displays demonstration
-        application information only.
+    <strong>
+        Demo Website:
+    </strong>
 
-    </p>
+    This website is for demonstration and
+    testing only. No real loan application
+    or financial transaction is processed
+    through this website.
 
-</section>
+</div>
 
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
 
     <p>
-        Finance Demo - Demonstration Website
+        © 2026 Reliance Finance - Demo
+    </p>
+
+    <p>
+        Application information for
+        demonstration purposes.
     </p>
 
 </footer>
 
 
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
 <script src="script.js"></script>
+
 
 </body>
 
