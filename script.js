@@ -896,3 +896,32 @@ function checkStatus() {
     `;
 
 }
+/* =========================================
+   MOBILE HAMBURGER MENU
+========================================= */
+
+const menuBtn = document.getElementById("menuBtn");
+const mainNav = document.getElementById("mainNav");
+
+if (menuBtn && mainNav) {
+
+    menuBtn.addEventListener("click", function () {
+
+        mainNav.classList.toggle("menu-open");
+
+    });
+
+
+    const menuLinks = mainNav.querySelectorAll("a");
+
+    menuLinks.forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            mainNav.classList.remove("menu-open");
+
+        });
+
+    });
+
+}

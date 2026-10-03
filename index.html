@@ -2,15 +2,26 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Reliance Finance - Demo</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
 
+
 <body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <header class="top-header">
 
@@ -18,22 +29,47 @@
 
         <div class="finance-logo">
             <span>R</span>
-            <small>▮▮▮</small>
+            <small>FINANCE</small>
         </div>
 
-        <div>
+        <div class="logo-text">
+
             <h1>Reliance Finance - Demo</h1>
-            <p>Loan Information & Services</p>
+
+            <p>
+                Loan Information &amp; Services
+            </p>
+
         </div>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button"
+            aria-label="Open Menu">
+
+            ☰
+
+        </button>
 
     </div>
 
 </header>
 
 
-<nav class="main-nav">
 
-    <a href="index.html" class="active">Home</a>
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<nav class="main-nav" id="mainNav">
+
+    <a href="index.html" class="active">
+        Home
+    </a>
 
     <a href="personal-loan.html">
         Personal Loan
@@ -54,55 +90,79 @@
 </nav>
 
 
-<!-- HERO -->
+
+<!-- =========================================
+     HERO SECTION
+========================================= -->
 
 <section class="hero-new">
 
+
     <div class="hero-content">
 
-        <span class="welcome-text">
+        <div class="welcome-text">
             WELCOME TO
-        </span>
+        </div>
+
 
         <h2>
             Reliance Finance
         </h2>
 
+
         <p>
-            Explore loan information and check your
-            application status.
+            Explore loan information and check
+            your application status.
         </p>
 
-        <a href="status.html" class="hero-button">
+
+        <a
+            href="status.html"
+            class="hero-button">
+
             Check Status →
+
         </a>
 
     </div>
 
 
+
+    <!-- HERO VISUAL -->
+
     <div class="hero-visual">
 
-        <div class="loan-icon">
-            ₹
-        </div>
 
         <div class="house-icon">
             🏠
         </div>
 
+
+        <div class="loan-icon">
+            ₹
+        </div>
+
+
         <div class="document-icon">
             LOAN
         </div>
 
+
     </div>
+
 
 </section>
 
 
-<!-- LOAN CARDS -->
+
+<!-- =========================================
+     LOAN CARDS
+========================================= -->
 
 <section class="loan-cards-new">
 
+
+    <!-- PERSONAL LOAN -->
 
     <div class="loan-card-new">
 
@@ -118,17 +178,20 @@
 
             <p>
                 Explore personal loan information
-                and eligibility details.
+                and available details.
             </p>
 
             <a href="personal-loan.html">
-                Know More →
+                View Details →
             </a>
 
         </div>
 
     </div>
 
+
+
+    <!-- BUSINESS LOAN -->
 
     <div class="loan-card-new">
 
@@ -144,17 +207,20 @@
 
             <p>
                 Explore business loan information
-                and eligibility details.
+                and available details.
             </p>
 
             <a href="business-loan.html">
-                Know More →
+                View Details →
             </a>
 
         </div>
 
     </div>
 
+
+
+    <!-- HOME LOAN -->
 
     <div class="loan-card-new">
 
@@ -170,96 +236,164 @@
 
             <p>
                 Explore home loan information
-                and eligibility details.
+                and available details.
             </p>
 
             <a href="home-loan.html">
-                Know More →
+                View Details →
             </a>
 
         </div>
 
     </div>
 
+
 </section>
 
 
-<!-- FEATURES -->
+
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <section class="features-section">
 
+
     <div class="feature">
 
-        <strong>🛡️</strong>
+        <strong>
+            ✓
+        </strong>
 
         <div>
-            <h3>Safe & Secure</h3>
-            <p>Information-focused demo website.</p>
+
+            <h3>
+                Simple Information
+            </h3>
+
+            <p>
+                Easy to understand loan information.
+            </p>
+
         </div>
 
     </div>
 
 
+
     <div class="feature">
 
-        <strong>📋</strong>
+        <strong>
+            🔒
+        </strong>
 
         <div>
-            <h3>Simple Process</h3>
-            <p>Easy information to understand.</p>
+
+            <h3>
+                Secure Design
+            </h3>
+
+            <p>
+                Clean and simple website interface.
+            </p>
+
         </div>
 
     </div>
 
 
+
     <div class="feature">
 
-        <strong>🕒</strong>
+        <strong>
+            📱
+        </strong>
 
         <div>
-            <h3>Check Anytime</h3>
-            <p>Check your application status.</p>
+
+            <h3>
+                Mobile Friendly
+            </h3>
+
+            <p>
+                Designed for mobile and desktop screens.
+            </p>
+
         </div>
 
     </div>
 
 
+
     <div class="feature">
 
-        <strong>🎧</strong>
+        <strong>
+            ⚡
+        </strong>
 
         <div>
-            <h3>Support</h3>
-            <p>Information and assistance.</p>
+
+            <h3>
+                Easy Status Check
+            </h3>
+
+            <p>
+                Quickly view application information.
+            </p>
+
         </div>
 
     </div>
+
 
 </section>
 
 
-<section class="admin-notice">
 
-    <p>
-        <b>Demo Website:</b>
-        This website is for demonstration and testing only.
-        No real loan application or financial transaction
-        is processed through this website.
-    </p>
+<!-- =========================================
+     DEMO NOTICE
+========================================= -->
 
-</section>
+<div class="admin-notice">
 
+    <strong>
+        Demo Website:
+    </strong>
+
+    This website is for demonstration and
+    testing only. No real loan application
+    or financial transaction is processed
+    through this website.
+
+</div>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
 
     <p>
-        Reliance Finance - Demo Website
+        © 2026 Reliance Finance - Demo
+    </p>
+
+    <p>
+        Application information for
+        demonstration purposes.
     </p>
 
 </footer>
 
 
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
 <script src="script.js"></script>
+
 
 </body>
 
