@@ -1,5 +1,6 @@
 /* ==================================================
-   FINANCE DEMO - COMPLETE STYLE.CSS
+   RELIANCE FINANCE - DEMO
+   COMPLETE RESPONSIVE STYLE.CSS
    ================================================== */
 
 * {
@@ -15,11 +16,16 @@ html {
 
 body {
     width: 100%;
+    min-width: 0;
     font-family: Arial, sans-serif;
     background: #f4f8fc;
     color: #222;
     line-height: 1.5;
     overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
 }
 
 
@@ -44,14 +50,15 @@ header p {
 
 
 /* ==================================================
-   TOP HEADER
+   HOME HEADER
    ================================================== */
 
 .top-header {
+    width: 100%;
     background: white;
     padding: 16px 7%;
     color: #0757a8;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
 }
 
 .logo-area {
@@ -79,6 +86,7 @@ header p {
 .finance-logo {
     width: 62px;
     height: 62px;
+    flex-shrink: 0;
     border-radius: 17px;
     background: linear-gradient(135deg,#0757a8,#1687ff);
     color: white;
@@ -86,8 +94,7 @@ header p {
     align-items: center;
     justify-content: center;
     position: relative;
-    flex-shrink: 0;
-    box-shadow: 0 5px 15px rgba(7,87,168,0.25);
+    box-shadow: 0 5px 15px rgba(7,87,168,.25);
 }
 
 .finance-logo span {
@@ -105,7 +112,7 @@ header p {
 
 
 /* ==================================================
-   COMMON NAV
+   NORMAL NAV
    ================================================== */
 
 nav {
@@ -125,22 +132,21 @@ nav a {
     font-weight: bold;
 }
 
-nav a:hover {
-    color: #043d76;
-}
-
 
 /* ==================================================
-   MAIN NAV
+   MAIN NAVBAR
    ================================================== */
 
 .main-nav {
+    width: 100%;
     background: #0757a8;
     padding: 12px 15px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 18px;
+
+    gap: 12px;
     flex-wrap: wrap;
 }
 
@@ -148,10 +154,13 @@ nav a:hover {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 9px 14px;
-    border-radius: 7px;
-    transition: 0.3s;
+
+    padding: 9px 16px;
+    border-radius: 8px;
+
+    transition: .3s;
     white-space: nowrap;
+    text-align: center;
 }
 
 .main-nav a:hover,
@@ -166,12 +175,17 @@ nav a:hover {
    ================================================== */
 
 .hero-new {
+    width: 100%;
     min-height: 390px;
+
     padding: 60px 9%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     gap: 40px;
+
     color: white;
 
     background: linear-gradient(
@@ -184,6 +198,7 @@ nav a:hover {
 }
 
 .hero-content {
+    width: 100%;
     max-width: 600px;
 }
 
@@ -191,7 +206,6 @@ nav a:hover {
     font-size: 17px;
     letter-spacing: 2px;
     font-weight: bold;
-    opacity: 0.95;
 }
 
 .hero-content h2 {
@@ -208,19 +222,20 @@ nav a:hover {
 
 .hero-button {
     display: inline-block;
+
     background: white;
     color: #0757a8;
+
     padding: 14px 25px;
+
     border-radius: 9px;
+
     text-decoration: none;
+
     font-weight: bold;
     font-size: 16px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    transition: 0.3s;
-}
 
-.hero-button:hover {
-    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
 }
 
 
@@ -230,13 +245,16 @@ nav a:hover {
 
 .hero-visual {
     position: relative;
+
     width: 390px;
     height: 260px;
+
     flex-shrink: 0;
 }
 
 .loan-icon {
     position: absolute;
+
     right: 45px;
     bottom: 10px;
 
@@ -247,7 +265,7 @@ nav a:hover {
 
     background: linear-gradient(
         145deg,
-        #ffffff,
+        #fff,
         #dceeff
     );
 
@@ -260,30 +278,33 @@ nav a:hover {
     font-size: 75px;
     font-weight: bold;
 
-    box-shadow: 0 15px 30px rgba(0,0,0,0.18);
+    box-shadow: 0 15px 30px rgba(0,0,0,.18);
 }
 
 .house-icon {
     position: absolute;
+
     left: 15px;
     bottom: 30px;
+
     font-size: 100px;
 
     filter: drop-shadow(
-        0 8px 8px rgba(0,0,0,0.2)
+        0 8px 8px rgba(0,0,0,.2)
     );
 }
 
 .document-icon {
     position: absolute;
+
     right: 0;
     top: 0;
 
-    background: white;
-    color: #0757a8;
-
     width: 150px;
     height: 115px;
+
+    background: white;
+    color: #0757a8;
 
     border-radius: 12px;
 
@@ -294,7 +315,7 @@ nav a:hover {
     font-weight: bold;
     font-size: 24px;
 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    box-shadow: 0 10px 25px rgba(0,0,0,.18);
 }
 
 
@@ -303,39 +324,39 @@ nav a:hover {
    ================================================== */
 
 .loan-cards-new {
+    width: 100%;
     max-width: 1200px;
+
     margin: 35px auto;
     padding: 0 20px;
 
     display: grid;
     grid-template-columns: repeat(3,1fr);
+
     gap: 25px;
 }
 
 .loan-card-new {
     background: white;
+
     padding: 25px;
+
     border-radius: 15px;
 
     display: flex;
     align-items: flex-start;
+
     gap: 18px;
 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
 
     border: 1px solid #e7edf4;
-
-    transition: 0.3s;
-}
-
-.loan-card-new:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
 .card-icon {
     width: 58px;
     height: 58px;
+
     min-width: 58px;
 
     border-radius: 50%;
@@ -382,7 +403,9 @@ nav a:hover {
    ================================================== */
 
 .features-section {
+    width: calc(100% - 30px);
     max-width: 1200px;
+
     margin: 25px auto 40px;
     padding: 22px;
 
@@ -393,6 +416,7 @@ nav a:hover {
 
     display: grid;
     grid-template-columns: repeat(4,1fr);
+
     gap: 20px;
 }
 
@@ -447,16 +471,23 @@ nav a:hover {
 
 .btn {
     display: inline-block;
+
     background: white;
     color: #0757a8;
+
     padding: 12px 25px;
+
     border-radius: 7px;
+
     text-decoration: none;
+
     font-weight: bold;
 }
 
 .loans {
+    width: 100%;
     max-width: 1000px;
+
     margin: 40px auto;
     padding: 20px;
 
@@ -470,8 +501,11 @@ nav a:hover {
 
 .card {
     background: white;
+
     padding: 25px;
+
     border-radius: 12px;
+
     box-shadow: 0 3px 12px #ddd;
 }
 
@@ -496,24 +530,31 @@ nav a:hover {
    ================================================== */
 
 .status-section {
+    width: 100%;
     max-width: 650px;
+
     margin: 45px auto;
     padding: 20px;
 }
 
 .status-box {
-    background: #ffffff;
+    background: white;
+
     padding: 30px;
+
     border-radius: 16px;
 
     box-shadow:
-        0 8px 30px rgba(0,0,0,0.10);
+        0 8px 30px rgba(0,0,0,.10);
 }
 
 .status-box h2 {
     color: #0757a8;
+
     font-size: 28px;
+
     margin-bottom: 8px;
+
     text-align: center;
 }
 
@@ -533,16 +574,10 @@ nav a:hover {
     font-size: 16px;
 
     border: 1px solid #d5dbe3;
+
     border-radius: 8px;
 
     outline: none;
-}
-
-.status-box input:focus {
-    border-color: #0757a8;
-
-    box-shadow:
-        0 0 4px #b7d7f5;
 }
 
 .status-box button {
@@ -562,10 +597,6 @@ nav a:hover {
     cursor: pointer;
 }
 
-.status-box button:hover {
-    background: #064582;
-}
-
 
 /* ==================================================
    STATUS CARD
@@ -574,16 +605,14 @@ nav a:hover {
 .status-card {
     margin-top: 25px;
 
-    background: #ffffff;
+    background: white;
 
     border-radius: 18px;
-
-    padding: 0;
 
     overflow: hidden;
 
     box-shadow:
-        0 8px 30px rgba(0,0,0,0.12);
+        0 8px 30px rgba(0,0,0,.12);
 
     border: 1px solid #e3e8ef;
 }
@@ -612,12 +641,11 @@ nav a:hover {
 .status-header h3 {
     color: white;
     font-size: 25px;
-    margin: 3px 0 0;
 }
 
 .small-label {
     font-size: 12px;
-    opacity: 0.85;
+    opacity: .85;
     text-transform: uppercase;
 }
 
@@ -647,6 +675,7 @@ nav a:hover {
 
 .progress-title {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
@@ -694,8 +723,6 @@ nav a:hover {
     border-radius: 30px;
 
     min-width: 40px;
-
-    transition: width 0.7s ease;
 }
 
 
@@ -749,13 +776,12 @@ nav a:hover {
 .detail-row b,
 .charge-row b {
     color: #222;
-
     font-size: 15px;
 }
 
 
 /* ==================================================
-   CHARGE DETAILS
+   CHARGE
    ================================================== */
 
 .charge-box {
@@ -774,7 +800,6 @@ nav a:hover {
     display: flex;
 
     justify-content: space-between;
-
     align-items: center;
 
     padding: 10px 0;
@@ -782,21 +807,12 @@ nav a:hover {
     border-bottom: 1px solid #e3e8ef;
 }
 
-.charge-row:last-of-type {
-    border-bottom: none;
-}
-
 .charge-amount-box {
     margin-top: 15px;
 
     padding: 16px 18px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #f4f8ff,
-            #eef6ff
-        );
+    background: #eef6ff;
 
     border: 1px solid #d7e7f8;
 
@@ -807,8 +823,6 @@ nav a:hover {
     justify-content: space-between;
 
     align-items: center;
-
-    gap: 15px;
 }
 
 .charge-amount-box span {
@@ -820,7 +834,6 @@ nav a:hover {
 .charge-amount-box strong {
     color: #0757a8;
     font-size: 22px;
-    font-weight: bold;
 }
 
 .charge-description {
@@ -837,25 +850,19 @@ nav a:hover {
 
 .charge-description strong {
     display: block;
-
     color: #0757a8;
-
     margin-bottom: 6px;
 }
 
 .charge-description p {
     margin: 0;
-
     color: #555;
-
     font-size: 14px;
-
-    line-height: 1.5;
 }
 
 
 /* ==================================================
-   IDENTITY / BANK
+   IDENTITY + BANK
    ================================================== */
 
 .identity-details,
@@ -864,7 +871,7 @@ nav a:hover {
 
     padding: 20px;
 
-    background: #ffffff;
+    background: white;
 
     border: 1px solid #e5eaf0;
 
@@ -875,7 +882,6 @@ nav a:hover {
     display: flex;
 
     justify-content: space-between;
-
     align-items: center;
 
     gap: 15px;
@@ -884,15 +890,6 @@ nav a:hover {
 
     border-bottom: 1px solid #edf0f3;
 }
-
-.detail-row:last-child {
-    border-bottom: none;
-}
-
-
-/* ==================================================
-   ACCOUNT INFORMATION
-   ================================================== */
 
 .payment-info-box {
     margin-top: 18px;
@@ -910,39 +907,27 @@ nav a:hover {
 
 .payment-info-box strong {
     display: block;
-
     color: #0757a8;
-
     margin-bottom: 6px;
 }
 
 .payment-info-box p {
     margin: 0;
-
     color: #555;
-
     font-size: 13px;
-
-    line-height: 1.5;
 }
 
 .status-demo-text {
     text-align: center;
-
     color: #777;
-
     font-size: 12px;
-
     margin: 15px 0;
 }
 
 .status-error {
     color: #d63031;
-
     text-align: center;
-
     margin-top: 15px;
-
     font-weight: bold;
 }
 
@@ -952,6 +937,7 @@ nav a:hover {
    ================================================== */
 
 .loan-page {
+    width: 100%;
     max-width: 900px;
 
     margin: 40px auto;
@@ -963,19 +949,17 @@ nav a:hover {
 
 .loan-page h2 {
     color: #0757a8;
-
     margin-bottom: 15px;
-
     font-size: 30px;
 }
 
 .loan-page > p {
     margin-bottom: 25px;
-
     color: #555;
 }
 
-.loan-info {
+.loan-info,
+.info-section {
     background: white;
 
     padding: 25px;
@@ -987,7 +971,12 @@ nav a:hover {
     text-align: left;
 }
 
-.loan-info h3 {
+.info-section {
+    margin-top: 20px;
+}
+
+.loan-info h3,
+.info-section h3 {
     color: #0757a8;
     margin-bottom: 15px;
 }
@@ -995,25 +984,6 @@ nav a:hover {
 .loan-info p {
     padding: 10px 0;
     border-bottom: 1px solid #eee;
-}
-
-.info-section {
-    background: white;
-
-    margin-top: 20px;
-
-    padding: 25px;
-
-    border-radius: 12px;
-
-    text-align: left;
-
-    box-shadow: 0 3px 12px #ddd;
-}
-
-.info-section h3 {
-    color: #0757a8;
-    margin-bottom: 12px;
 }
 
 .info-section li {
@@ -1040,10 +1010,11 @@ nav a:hover {
 
 
 /* ==================================================
-   ADMIN PANEL
+   ADMIN
    ================================================== */
 
 .admin-section {
+    width: 100%;
     max-width: 850px;
 
     margin: 40px auto;
@@ -1052,7 +1023,7 @@ nav a:hover {
 }
 
 .admin-box {
-    background: #ffffff;
+    background: white;
 
     padding: 30px;
 
@@ -1063,9 +1034,7 @@ nav a:hover {
 
 .admin-box h2 {
     text-align: center;
-
     color: #0757a8;
-
     margin-bottom: 25px;
 }
 
@@ -1073,12 +1042,9 @@ nav a:hover {
     display: block;
 
     margin-top: 16px;
-
     margin-bottom: 7px;
 
     font-weight: bold;
-
-    color: #333;
 }
 
 .admin-box input,
@@ -1095,21 +1061,12 @@ nav a:hover {
 
     outline: none;
 
-    background: #fff;
-}
-
-.admin-box input:focus,
-.admin-box select:focus {
-    border-color: #0757a8;
-
-    box-shadow: 0 0 4px #b7d7f5;
+    background: white;
 }
 
 .admin-box small {
     display: block;
-
     margin-top: 6px;
-
     color: #666;
 }
 
@@ -1135,15 +1092,6 @@ nav a:hover {
     cursor: pointer;
 }
 
-.admin-box button[type="submit"]:hover {
-    background: #064582;
-}
-
-
-/* ==================================================
-   CUSTOMER RECORD
-   ================================================== */
-
 .customer-record {
     background: #f4f7fb;
 
@@ -1162,16 +1110,9 @@ nav a:hover {
 
 .customer-record hr {
     border: 0;
-
     border-top: 1px solid #ddd;
-
     margin: 15px 0;
 }
-
-
-/* ==================================================
-   EDIT BUTTON
-   ================================================== */
 
 .edit-customer-btn {
     width: 100%;
@@ -1189,24 +1130,12 @@ nav a:hover {
     color: white;
 
     font-weight: bold;
-
-    cursor: pointer;
 }
-
-.edit-customer-btn:hover {
-    background: #064582;
-}
-
-
-/* ==================================================
-   ADMIN SUBTITLE
-   ================================================== */
 
 .admin-subtitle {
     color: #0757a8;
 
     margin-top: 30px;
-
     margin-bottom: 10px;
 
     border-bottom: 1px solid #ddd;
@@ -1214,12 +1143,8 @@ nav a:hover {
     padding-bottom: 10px;
 }
 
-
-/* ==================================================
-   DEMO NOTICE
-   ================================================== */
-
 .admin-notice {
+    width: calc(100% - 24px);
     max-width: 850px;
 
     margin: 20px auto;
@@ -1241,6 +1166,8 @@ nav a:hover {
    ================================================== */
 
 footer {
+    width: 100%;
+
     background: #0757a8;
 
     color: white;
@@ -1267,18 +1194,13 @@ footer {
         padding: 50px 20px;
     }
 
-    .hero-content {
-        width: 100%;
-    }
-
     .hero-content p {
         margin-left: auto;
         margin-right: auto;
     }
 
     .hero-visual {
-        transform: scale(0.8);
-
+        transform: scale(.8);
         margin-top: -15px;
     }
 
@@ -1292,18 +1214,13 @@ footer {
 
     .feature {
         border-right: none;
-
         border-bottom: 1px solid #c9def1;
-    }
-
-    .feature:last-child {
-        border-bottom: none;
     }
 }
 
 
 /* ==================================================
-   MOBILE
+   MOBILE - FULL FIX
    ================================================== */
 
 @media (max-width: 600px) {
@@ -1314,104 +1231,109 @@ footer {
     }
 
 
-    /* TOP HEADER */
+    /* HEADER */
 
     .top-header {
+        width: 100%;
         padding: 12px 14px;
     }
 
     .logo-area {
+        width: 100%;
         gap: 10px;
     }
 
+    .finance-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .finance-logo span {
+        font-size: 31px;
+    }
+
+    .finance-logo small {
+        font-size: 7px;
+        bottom: 5px;
+    }
+
     .logo-area h1 {
-        font-size: 20px;
+        font-size: 21px;
         line-height: 1.2;
     }
 
     .logo-area p {
-        font-size: 11px;
+        font-size: 12px;
     }
 
 
-    /* LOGO */
-
-    .finance-logo {
-        width: 48px;
-        height: 48px;
-        border-radius: 14px;
-    }
-
-    .finance-logo span {
-        font-size: 30px;
-    }
-
-    .finance-logo small {
-        font-size: 6px;
-        bottom: 4px;
-    }
-
-
-    /* ==================================================
-       MOBILE NAV - SINGLE ROW
-       ================================================== */
+    /* ==========================================
+       MOBILE NAVBAR
+       ========================================== */
 
     .main-nav {
         width: 100%;
 
-        display: flex;
+        display: grid;
 
-        flex-wrap: nowrap;
+        grid-template-columns: 1fr 1fr;
 
-        justify-content: space-between;
+        gap: 7px;
 
-        align-items: center;
+        padding: 10px;
 
-        gap: 0;
-
-        padding: 7px 3px;
-
-        overflow: hidden;
+        background: #0757a8;
     }
 
     .main-nav a {
-        flex: 1 1 0;
+        width: 100%;
 
         min-width: 0;
 
+        padding: 11px 4px;
+
+        font-size: 14px;
+
+        line-height: 1.2;
+
+        white-space: normal;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        border-radius: 8px;
+
         text-align: center;
-
-        font-size: 10.5px;
-
-        padding: 9px 2px;
-
-        border-radius: 6px;
-
-        white-space: nowrap;
     }
 
     .main-nav a:last-child {
-        flex-basis: auto;
-        max-width: none;
+        grid-column: 1 / 3;
+
+        width: 55%;
+
+        justify-self: center;
     }
 
 
-    /* ==================================================
+    /* ==========================================
        HERO
-       ================================================== */
+       ========================================== */
 
     .hero-new {
         width: 100%;
 
         min-height: auto;
 
-        padding: 40px 15px 15px;
+        padding: 45px 18px 25px;
+
+        display: flex;
 
         flex-direction: column;
 
         text-align: center;
 
-        gap: 5px;
+        gap: 10px;
     }
 
     .hero-content {
@@ -1420,80 +1342,49 @@ footer {
     }
 
     .welcome-text {
-        font-size: 13px;
-
-        letter-spacing: 1.5px;
+        font-size: 14px;
     }
 
     .hero-content h2 {
-        font-size: 36px;
-
-        line-height: 1.15;
-
-        margin: 8px 0 14px;
+        font-size: 38px;
+        line-height: 1.1;
+        word-break: normal;
     }
 
     .hero-content p {
+        width: 100%;
+
         font-size: 16px;
 
         line-height: 1.5;
 
-        margin: 0 auto 22px;
-
-        max-width: 100%;
+        margin-bottom: 25px;
     }
 
     .hero-button {
         padding: 13px 22px;
-
-        font-size: 15px;
     }
 
 
-    /* ==================================================
-       HERO IMAGE
-       ================================================== */
+    /* ==========================================
+       HERO IMAGE AREA
+       ========================================== */
 
     .hero-visual {
-        width: 280px;
+        width: 300px;
+        max-width: 100%;
 
-        height: 190px;
+        height: 205px;
 
-        transform: scale(0.68);
+        transform: scale(.72);
 
-        margin: -5px auto -35px;
-    }
-
-    .loan-icon {
-        width: 125px;
-
-        height: 125px;
-
-        font-size: 65px;
-
-        right: 25px;
-    }
-
-    .house-icon {
-        font-size: 85px;
-
-        left: 5px;
-
-        bottom: 25px;
-    }
-
-    .document-icon {
-        width: 125px;
-
-        height: 95px;
-
-        font-size: 21px;
+        margin: -15px auto -25px;
     }
 
 
-    /* ==================================================
+    /* ==========================================
        LOAN CARDS
-       ================================================== */
+       ========================================== */
 
     .loan-cards-new {
         width: 100%;
@@ -1502,40 +1393,47 @@ footer {
 
         padding: 0 14px;
 
+        display: grid;
+
         grid-template-columns: 1fr;
 
-        gap: 15px;
+        gap: 18px;
     }
 
     .loan-card-new {
         width: 100%;
 
-        padding: 18px;
+        padding: 20px;
 
-        gap: 14px;
+        gap: 16px;
+
+        border-radius: 15px;
+    }
+
+    .card-icon {
+        width: 58px;
+        min-width: 58px;
     }
 
     .loan-card-new h3 {
-        font-size: 20px;
-    }
-
-    .loan-card-new p {
-        font-size: 14px;
+        font-size: 25px;
     }
 
 
-    /* ==================================================
+    /* ==========================================
        FEATURES
-       ================================================== */
+       ========================================== */
 
     .features-section {
-        width: auto;
-
-        grid-template-columns: 1fr;
+        width: calc(100% - 28px);
 
         margin: 20px 14px 30px;
 
         padding: 15px;
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
     }
 
     .feature {
@@ -1551,9 +1449,9 @@ footer {
     }
 
 
-    /* ==================================================
+    /* ==========================================
        STATUS
-       ================================================== */
+       ========================================== */
 
     .status-section {
         width: 100%;
@@ -1575,61 +1473,24 @@ footer {
 
     .status-card {
         width: 100%;
-
         border-radius: 14px;
     }
 
     .status-header {
         padding: 18px;
 
-        align-items: flex-start;
-
         flex-direction: column;
+
+        align-items: flex-start;
     }
 
     .status-header h3 {
         font-size: 22px;
-
-        word-break: break-word;
     }
-
-    .status-badge {
-        font-size: 11px;
-
-        white-space: normal;
-    }
-
-
-    /* ==================================================
-       PROGRESS
-       ================================================== */
 
     .progress-section {
         padding: 18px;
     }
-
-    .progress-title {
-        gap: 10px;
-    }
-
-    .progress-title b {
-        font-size: 18px;
-    }
-
-    .progress-box {
-        height: 34px;
-    }
-
-    .progress-bar {
-        line-height: 34px;
-
-        font-size: 13px;
-    }
-
-
-    /* ==================================================
-       STATUS DETAILS
-       ================================================== */
 
     .status-details {
         padding: 18px;
@@ -1637,23 +1498,11 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .status-section-title {
-        font-size: 16px;
-    }
-
-
-    /* ==================================================
-       CHARGE / BANK
-       ================================================== */
-
     .charge-box,
     .identity-details,
     .bank-details {
         margin-left: 18px;
-
         margin-right: 18px;
-
-        padding: 17px;
     }
 
     .detail-row {
@@ -1662,7 +1511,6 @@ footer {
 
     .detail-row b {
         display: block;
-
         margin-top: 4px;
 
         word-break: break-word;
@@ -1674,40 +1522,21 @@ footer {
 
     .charge-row b {
         display: block;
-
         margin-top: 4px;
-
-        word-break: break-word;
     }
 
     .charge-amount-box {
         padding: 14px;
-
-        gap: 10px;
-    }
-
-    .charge-amount-box span {
-        font-size: 13px;
     }
 
     .charge-amount-box strong {
         font-size: 19px;
-
-        white-space: nowrap;
-    }
-
-    .charge-description p {
-        font-size: 13px;
-    }
-
-    .payment-info-box p {
-        font-size: 12px;
     }
 
 
-    /* ==================================================
+    /* ==========================================
        LOAN PAGES
-       ================================================== */
+       ========================================== */
 
     .loan-page {
         width: 100%;
@@ -1721,21 +1550,16 @@ footer {
         font-size: 25px;
     }
 
-    .loan-page > p {
-        font-size: 14px;
-    }
-
     .loan-info,
     .info-section {
         width: 100%;
-
         padding: 20px 15px;
     }
 
 
-    /* ==================================================
+    /* ==========================================
        ADMIN
-       ================================================== */
+       ========================================== */
 
     .admin-section {
         width: 100%;
@@ -1755,41 +1579,20 @@ footer {
         font-size: 21px;
     }
 
-    .admin-box input,
-    .admin-box select {
-        font-size: 16px;
-    }
-
-
-    /* ==================================================
-       CUSTOMER RECORD
-       ================================================== */
-
-    .customer-record {
-        width: 100%;
-
-        padding: 15px;
-
-        overflow-wrap: anywhere;
-    }
-
-
-    /* ==================================================
-       NOTICE
-       ================================================== */
-
     .admin-notice {
-        margin: 15px 12px;
+        width: calc(100% - 24px);
 
-        font-size: 13px;
+        margin: 15px 12px;
     }
 
 
-    /* ==================================================
+    /* ==========================================
        FOOTER
-       ================================================== */
+       ========================================== */
 
     footer {
+        width: 100%;
+
         padding: 18px 12px;
 
         font-size: 13px;
@@ -1808,26 +1611,21 @@ footer {
     }
 
     .logo-area p {
-        font-size: 10px;
-    }
-
-    .finance-logo {
-        width: 44px;
-        height: 44px;
-    }
-
-    .finance-logo span {
-        font-size: 27px;
+        font-size: 11px;
     }
 
     .main-nav {
-        padding-left: 2px;
-        padding-right: 2px;
+        gap: 5px;
+        padding: 8px;
     }
 
     .main-nav a {
-        font-size: 9.5px;
-        padding: 8px 1px;
+        font-size: 12px;
+        padding: 10px 3px;
+    }
+
+    .main-nav a:last-child {
+        width: 65%;
     }
 
     .hero-content h2 {
@@ -1838,12 +1636,12 @@ footer {
         font-size: 15px;
     }
 
-    .hero-visual {
-        transform: scale(0.62);
+    .loan-card-new h3 {
+        font-size: 22px;
     }
 }
 
 
 /* ==================================================
-   END OF STYLE.CSS
+   END
    ================================================== */
