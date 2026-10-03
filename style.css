@@ -66,6 +66,7 @@ header p {
 
 .logo-text {
     flex: 1;
+    min-width: 0;
 }
 
 .logo-area h1 {
@@ -89,6 +90,7 @@ header p {
     width: 62px;
     height: 62px;
     min-width: 62px;
+
     border-radius: 17px;
 
     background: linear-gradient(
@@ -118,13 +120,14 @@ header p {
 .finance-logo small {
     position: absolute;
     bottom: 7px;
+
     font-size: 9px;
     letter-spacing: 1px;
 }
 
 
 /* ==================================================
-   HAMBURGER BUTTON
+   HAMBURGER
 ================================================== */
 
 .menu-btn {
@@ -146,6 +149,8 @@ header p {
 
     align-items: center;
     justify-content: center;
+
+    flex-shrink: 0;
 }
 
 
@@ -171,6 +176,7 @@ header p {
 
 .main-nav a {
     color: white;
+
     text-decoration: none;
 
     font-weight: bold;
@@ -203,7 +209,9 @@ header p {
     padding: 60px 9%;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     gap: 40px;
@@ -226,13 +234,17 @@ header p {
 
 .welcome-text {
     font-size: 17px;
+
     letter-spacing: 2px;
+
     font-weight: bold;
+
     opacity: .95;
 }
 
 .hero-content h2 {
     font-size: 58px;
+
     line-height: 1.1;
 
     margin: 8px 0 15px;
@@ -250,6 +262,7 @@ header p {
     display: inline-block;
 
     background: white;
+
     color: #0757a8;
 
     padding: 14px 25px;
@@ -259,6 +272,7 @@ header p {
     text-decoration: none;
 
     font-weight: bold;
+
     font-size: 16px;
 
     box-shadow:
@@ -285,11 +299,14 @@ header p {
     flex-shrink: 0;
 }
 
+
+/* ₹ CIRCLE */
+
 .loan-icon {
     position: absolute;
 
-    right: 45px;
-    bottom: 10px;
+    right: 55px;
+    bottom: 5px;
 
     width: 145px;
     height: 145px;
@@ -299,7 +316,7 @@ header p {
     background:
         linear-gradient(
             145deg,
-            #fff,
+            #ffffff,
             #dceeff
         );
 
@@ -310,11 +327,17 @@ header p {
     justify-content: center;
 
     font-size: 75px;
+
     font-weight: bold;
 
     box-shadow:
         0 15px 30px rgba(0,0,0,.18);
+
+    z-index: 1;
 }
+
+
+/* HOUSE */
 
 .house-icon {
     position: absolute;
@@ -328,31 +351,42 @@ header p {
         drop-shadow(
             0 8px 8px rgba(0,0,0,.2)
         );
+
+    z-index: 2;
 }
+
+
+/* LOAN BOX */
 
 .document-icon {
     position: absolute;
 
     right: 0;
-    top: 0;
+    top: -15px;
+
+    width: 135px;
+    height: 95px;
 
     background: white;
-    color: #0757a8;
 
-    width: 150px;
-    height: 115px;
+    color: #0757a8;
 
     border-radius: 12px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     font-weight: bold;
-    font-size: 24px;
+
+    font-size: 22px;
 
     box-shadow:
         0 10px 25px rgba(0,0,0,.18);
+
+    z-index: 3;
 }
 
 
@@ -362,6 +396,7 @@ header p {
 
 .loan-cards-new {
     width: 100%;
+
     max-width: 1200px;
 
     margin: 35px auto;
@@ -371,7 +406,7 @@ header p {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
     gap: 25px;
 }
@@ -392,7 +427,8 @@ header p {
     box-shadow:
         0 5px 20px rgba(0,0,0,.08);
 
-    border: 1px solid #e7edf4;
+    border:
+        1px solid #e7edf4;
 
     transition: .3s;
 }
@@ -413,7 +449,9 @@ header p {
     border-radius: 50%;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     font-size: 27px;
@@ -433,6 +471,7 @@ header p {
 
 .loan-card-new h3 {
     color: #0757a8;
+
     margin-bottom: 8px;
 }
 
@@ -468,14 +507,15 @@ header p {
 
     background: #edf6ff;
 
-    border: 1px solid #d7e9fa;
+    border:
+        1px solid #d7e9fa;
 
     border-radius: 16px;
 
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
     gap: 20px;
 }
@@ -503,11 +543,13 @@ header p {
 
 .feature h3 {
     color: #0757a8;
+
     font-size: 15px;
 }
 
 .feature p {
     color: #667085;
+
     font-size: 12px;
 }
 
@@ -528,6 +570,7 @@ header p {
 
 .hero h2 {
     font-size: 34px;
+
     margin-bottom: 12px;
 }
 
@@ -539,6 +582,7 @@ header p {
     display: inline-block;
 
     background: white;
+
     color: #0757a8;
 
     padding: 12px 25px;
@@ -560,7 +604,7 @@ header p {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(220px,1fr));
+        repeat(auto-fit,minmax(220px,1fr));
 
     gap: 20px;
 }
@@ -577,6 +621,7 @@ header p {
 
 .card h3 {
     color: #0757a8;
+
     margin-bottom: 10px;
 }
 
@@ -1119,7 +1164,8 @@ header p {
 
     border-radius: 12px;
 
-    box-shadow: 0 3px 12px #ddd;
+    box-shadow:
+        0 3px 12px #ddd;
 
     text-align: left;
 }
@@ -1148,7 +1194,8 @@ header p {
 
     text-align: left;
 
-    box-shadow: 0 3px 12px #ddd;
+    box-shadow:
+        0 3px 12px #ddd;
 }
 
 .info-section h3 {
@@ -1435,7 +1482,7 @@ footer {
 
 
 /* ==================================================
-   MOBILE - HAMBURGER STYLE
+   MOBILE
 ================================================== */
 
 @media (max-width: 600px) {
@@ -1447,7 +1494,7 @@ footer {
     }
 
 
-    /* TOP HEADER */
+    /* HEADER */
 
     .top-header {
         width: 100%;
@@ -1466,17 +1513,23 @@ footer {
     }
 
     .logo-text {
+        flex: 1;
+
         min-width: 0;
     }
 
     .logo-area h1 {
         font-size: 21px;
 
+        line-height: 1.2;
+
         white-space: nowrap;
     }
 
     .logo-area p {
         font-size: 12px;
+
+        margin-top: 3px;
     }
 
 
@@ -1636,6 +1689,47 @@ footer {
         margin-top: -10px;
 
         margin-bottom: -35px;
+    }
+
+
+    /* MOBILE ₹ CIRCLE */
+
+    .loan-icon {
+        width: 135px;
+
+        height: 135px;
+
+        right: 45px;
+
+        bottom: 0;
+
+        font-size: 65px;
+    }
+
+
+    /* MOBILE LOAN BOX */
+
+    .document-icon {
+        width: 125px;
+
+        height: 90px;
+
+        right: 0;
+
+        top: -10px;
+
+        font-size: 20px;
+    }
+
+
+    /* HOUSE */
+
+    .house-icon {
+        left: 8px;
+
+        bottom: 22px;
+
+        font-size: 82px;
     }
 
 
@@ -1918,6 +2012,38 @@ footer {
         margin-top: -20px;
 
         margin-bottom: -45px;
+    }
+
+    .loan-icon {
+        width: 130px;
+
+        height: 130px;
+
+        right: 42px;
+
+        bottom: 0;
+
+        font-size: 62px;
+    }
+
+    .document-icon {
+        width: 120px;
+
+        height: 86px;
+
+        right: 0;
+
+        top: -8px;
+
+        font-size: 19px;
+    }
+
+    .house-icon {
+        font-size: 78px;
+
+        left: 5px;
+
+        bottom: 20px;
     }
 }
 
