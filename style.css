@@ -8,11 +8,18 @@
     box-sizing: border-box;
 }
 
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
+    width: 100%;
     font-family: Arial, sans-serif;
     background: #f4f8fc;
     color: #222;
     line-height: 1.5;
+    overflow-x: hidden;
 }
 
 
@@ -37,14 +44,14 @@ header p {
 
 
 /* ==================================================
-   NEW HOME HEADER
+   TOP HEADER
    ================================================== */
 
 .top-header {
     background: white;
     padding: 16px 7%;
     color: #0757a8;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
 .logo-area {
@@ -66,20 +73,21 @@ header p {
 
 
 /* ==================================================
-   CUSTOM R LOGO
+   LOGO
    ================================================== */
 
 .finance-logo {
     width: 62px;
     height: 62px;
     border-radius: 17px;
-    background: linear-gradient(135deg, #0757a8, #1687ff);
+    background: linear-gradient(135deg,#0757a8,#1687ff);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    box-shadow: 0 5px 15px rgba(7, 87, 168, 0.25);
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(7,87,168,0.25);
 }
 
 .finance-logo span {
@@ -97,7 +105,7 @@ header p {
 
 
 /* ==================================================
-   NAVIGATION
+   COMMON NAV
    ================================================== */
 
 nav {
@@ -123,7 +131,7 @@ nav a:hover {
 
 
 /* ==================================================
-   NEW HOME NAV
+   MAIN NAV
    ================================================== */
 
 .main-nav {
@@ -132,7 +140,7 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 28px;
+    gap: 18px;
     flex-wrap: wrap;
 }
 
@@ -140,9 +148,10 @@ nav a:hover {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 9px 16px;
+    padding: 9px 14px;
     border-radius: 7px;
     transition: 0.3s;
+    white-space: nowrap;
 }
 
 .main-nav a:hover,
@@ -206,7 +215,7 @@ nav a:hover {
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     transition: 0.3s;
 }
 
@@ -251,18 +260,17 @@ nav a:hover {
     font-size: 75px;
     font-weight: bold;
 
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.18);
 }
 
 .house-icon {
     position: absolute;
     left: 15px;
     bottom: 30px;
-
     font-size: 100px;
 
     filter: drop-shadow(
-        0 8px 8px rgba(0, 0, 0, 0.2)
+        0 8px 8px rgba(0,0,0,0.2)
     );
 }
 
@@ -286,12 +294,12 @@ nav a:hover {
     font-weight: bold;
     font-size: 24px;
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
 }
 
 
 /* ==================================================
-   HOME LOAN CARDS
+   LOAN CARDS
    ================================================== */
 
 .loan-cards-new {
@@ -300,22 +308,20 @@ nav a:hover {
     padding: 0 20px;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 25px;
 }
 
 .loan-card-new {
     background: white;
-
     padding: 25px;
-
     border-radius: 15px;
 
     display: flex;
     align-items: flex-start;
     gap: 18px;
 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 
     border: 1px solid #e7edf4;
 
@@ -324,15 +330,12 @@ nav a:hover {
 
 .loan-card-new:hover {
     transform: translateY(-5px);
-
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
 .card-icon {
     width: 58px;
     height: 58px;
-
     min-width: 58px;
 
     border-radius: 50%;
@@ -389,7 +392,7 @@ nav a:hover {
     border-radius: 16px;
 
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 20px;
 }
 
@@ -423,15 +426,13 @@ nav a:hover {
 
 
 /* ==================================================
-   OLD HOME ELEMENTS
+   OLD HOME
    ================================================== */
 
 .hero {
     background: #0757a8;
     color: white;
-
     text-align: center;
-
     padding: 65px 20px;
 }
 
@@ -446,41 +447,31 @@ nav a:hover {
 
 .btn {
     display: inline-block;
-
     background: white;
     color: #0757a8;
-
     padding: 12px 25px;
-
     border-radius: 7px;
-
     text-decoration: none;
-
     font-weight: bold;
 }
 
 .loans {
     max-width: 1000px;
-
     margin: 40px auto;
-
     padding: 20px;
 
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
+        repeat(auto-fit,minmax(220px,1fr));
 
     gap: 20px;
 }
 
 .card {
     background: white;
-
     padding: 25px;
-
     border-radius: 12px;
-
     box-shadow: 0 3px 12px #ddd;
 }
 
@@ -495,9 +486,7 @@ nav a:hover {
 
 .card a {
     color: #0757a8;
-
     font-weight: bold;
-
     text-decoration: none;
 }
 
@@ -508,42 +497,33 @@ nav a:hover {
 
 .status-section {
     max-width: 650px;
-
     margin: 45px auto;
-
     padding: 20px;
 }
 
 .status-box {
     background: #ffffff;
-
     padding: 30px;
-
     border-radius: 16px;
 
     box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.10);
+        0 8px 30px rgba(0,0,0,0.10);
 }
 
 .status-box h2 {
     color: #0757a8;
-
     font-size: 28px;
-
     margin-bottom: 8px;
-
     text-align: center;
 }
 
 .status-box > p {
     color: #666;
-
     text-align: center;
 }
 
 .status-box input {
     width: 100%;
-
     height: 50px;
 
     margin: 18px 0 12px;
@@ -553,7 +533,6 @@ nav a:hover {
     font-size: 16px;
 
     border: 1px solid #d5dbe3;
-
     border-radius: 8px;
 
     outline: none;
@@ -568,17 +547,14 @@ nav a:hover {
 
 .status-box button {
     width: 100%;
-
     height: 50px;
 
     border: none;
 
     background: #0757a8;
-
     color: white;
 
     font-size: 16px;
-
     font-weight: bold;
 
     border-radius: 8px;
@@ -607,7 +583,7 @@ nav a:hover {
     overflow: hidden;
 
     box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.12);
+        0 8px 30px rgba(0,0,0,0.12);
 
     border: 1px solid #e3e8ef;
 }
@@ -635,23 +611,18 @@ nav a:hover {
 
 .status-header h3 {
     color: white;
-
     font-size: 25px;
-
     margin: 3px 0 0;
 }
 
 .small-label {
     font-size: 12px;
-
     opacity: 0.85;
-
     text-transform: uppercase;
 }
 
 .status-badge {
     background: white;
-
     color: #0757a8;
 
     padding: 8px 12px;
@@ -659,7 +630,6 @@ nav a:hover {
     border-radius: 20px;
 
     font-size: 12px;
-
     font-weight: bold;
 
     white-space: nowrap;
@@ -667,20 +637,17 @@ nav a:hover {
 
 
 /* ==================================================
-   APPLICATION PROGRESS
+   PROGRESS
    ================================================== */
 
 .progress-section {
     padding: 22px;
-
     background: #f8fbff;
 }
 
 .progress-title {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
     color: #0757a8;
@@ -696,7 +663,6 @@ nav a:hover {
 
 .progress-box {
     width: 100%;
-
     height: 38px;
 
     background: #e4eaf1;
@@ -729,8 +695,7 @@ nav a:hover {
 
     min-width: 40px;
 
-    transition:
-        width 0.7s ease;
+    transition: width 0.7s ease;
 }
 
 
@@ -743,8 +708,7 @@ nav a:hover {
 
     display: grid;
 
-    grid-template-columns:
-        repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
 
     gap: 14px;
 }
@@ -822,9 +786,6 @@ nav a:hover {
     border-bottom: none;
 }
 
-
-/* CHARGE AMOUNT */
-
 .charge-amount-box {
     margin-top: 15px;
 
@@ -852,22 +813,15 @@ nav a:hover {
 
 .charge-amount-box span {
     color: #666;
-
     font-size: 14px;
-
     font-weight: bold;
 }
 
 .charge-amount-box strong {
     color: #0757a8;
-
     font-size: 22px;
-
     font-weight: bold;
 }
-
-
-/* CHARGE DESCRIPTION */
 
 .charge-description {
     margin-top: 15px;
@@ -901,7 +855,7 @@ nav a:hover {
 
 
 /* ==================================================
-   IDENTITY DETAILS
+   IDENTITY / BANK
    ================================================== */
 
 .identity-details,
@@ -928,8 +882,7 @@ nav a:hover {
 
     padding: 11px 0;
 
-    border-bottom:
-        1px solid #edf0f3;
+    border-bottom: 1px solid #edf0f3;
 }
 
 .detail-row:last-child {
@@ -1029,21 +982,18 @@ nav a:hover {
 
     border-radius: 12px;
 
-    box-shadow:
-        0 3px 12px #ddd;
+    box-shadow: 0 3px 12px #ddd;
 
     text-align: left;
 }
 
 .loan-info h3 {
     color: #0757a8;
-
     margin-bottom: 15px;
 }
 
 .loan-info p {
     padding: 10px 0;
-
     border-bottom: 1px solid #eee;
 }
 
@@ -1058,13 +1008,11 @@ nav a:hover {
 
     text-align: left;
 
-    box-shadow:
-        0 3px 12px #ddd;
+    box-shadow: 0 3px 12px #ddd;
 }
 
 .info-section h3 {
     color: #0757a8;
-
     margin-bottom: 12px;
 }
 
@@ -1110,8 +1058,7 @@ nav a:hover {
 
     border-radius: 12px;
 
-    box-shadow:
-        0 3px 15px #d9d9d9;
+    box-shadow: 0 3px 15px #d9d9d9;
 }
 
 .admin-box h2 {
@@ -1155,8 +1102,7 @@ nav a:hover {
 .admin-box select:focus {
     border-color: #0757a8;
 
-    box-shadow:
-        0 0 4px #b7d7f5;
+    box-shadow: 0 0 4px #b7d7f5;
 }
 
 .admin-box small {
@@ -1207,8 +1153,7 @@ nav a:hover {
 
     border-radius: 10px;
 
-    border-left:
-        4px solid #0757a8;
+    border-left: 4px solid #0757a8;
 }
 
 .customer-record p {
@@ -1218,8 +1163,7 @@ nav a:hover {
 .customer-record hr {
     border: 0;
 
-    border-top:
-        1px solid #ddd;
+    border-top: 1px solid #ddd;
 
     margin: 15px 0;
 }
@@ -1265,8 +1209,7 @@ nav a:hover {
 
     margin-bottom: 10px;
 
-    border-bottom:
-        1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 
     padding-bottom: 10px;
 }
@@ -1311,7 +1254,7 @@ footer {
 
 
 /* ==================================================
-   RESPONSIVE - TABLET
+   TABLET
    ================================================== */
 
 @media (max-width: 800px) {
@@ -1350,8 +1293,7 @@ footer {
     .feature {
         border-right: none;
 
-        border-bottom:
-            1px solid #c9def1;
+        border-bottom: 1px solid #c9def1;
     }
 
     .feature:last-child {
@@ -1361,12 +1303,10 @@ footer {
 
 
 /* ==================================================
-   RESPONSIVE - MOBILE
+   MOBILE
    ================================================== */
 
 @media (max-width: 600px) {
-
-    /* BODY */
 
     body {
         width: 100%;
@@ -1374,21 +1314,10 @@ footer {
     }
 
 
-    /* COMMON HEADER */
-
-    header {
-        padding: 18px 12px;
-    }
-
-    header h1 {
-        font-size: 25px;
-    }
-
-
     /* TOP HEADER */
 
     .top-header {
-        padding: 12px 15px;
+        padding: 12px 14px;
     }
 
     .logo-area {
@@ -1411,7 +1340,6 @@ footer {
         width: 48px;
         height: 48px;
         border-radius: 14px;
-        flex-shrink: 0;
     }
 
     .finance-logo span {
@@ -1424,54 +1352,66 @@ footer {
     }
 
 
-    /* MOBILE NAVIGATION */
+    /* ==================================================
+       MOBILE NAV - SINGLE ROW
+       ================================================== */
 
     .main-nav {
         width: 100%;
 
-        display: grid;
+        display: flex;
 
-        grid-template-columns:
-            repeat(2, 1fr);
+        flex-wrap: nowrap;
 
-        gap: 6px;
+        justify-content: space-between;
 
-        padding: 8px;
+        align-items: center;
+
+        gap: 0;
+
+        padding: 7px 3px;
+
+        overflow: hidden;
     }
 
     .main-nav a {
-        width: 100%;
+        flex: 1 1 0;
+
+        min-width: 0;
 
         text-align: center;
 
-        font-size: 13px;
+        font-size: 10.5px;
 
-        padding: 9px 5px;
+        padding: 9px 2px;
 
-        border-radius: 7px;
+        border-radius: 6px;
 
         white-space: nowrap;
     }
 
     .main-nav a:last-child {
-        grid-column: 1 / -1;
+        flex-basis: auto;
+        max-width: none;
     }
 
 
-    /* HERO */
+    /* ==================================================
+       HERO
+       ================================================== */
 
     .hero-new {
         width: 100%;
 
         min-height: auto;
 
-        padding: 40px 16px 20px;
+        padding: 40px 15px 15px;
 
         flex-direction: column;
 
         text-align: center;
 
-        gap: 10px;
+        gap: 5px;
     }
 
     .hero-content {
@@ -1491,8 +1431,6 @@ footer {
         line-height: 1.15;
 
         margin: 8px 0 14px;
-
-        word-break: normal;
     }
 
     .hero-content p {
@@ -1512,16 +1450,18 @@ footer {
     }
 
 
-    /* HERO VISUAL */
+    /* ==================================================
+       HERO IMAGE
+       ================================================== */
 
     .hero-visual {
         width: 280px;
 
         height: 190px;
 
-        transform: scale(0.72);
+        transform: scale(0.68);
 
-        margin: -10px auto -25px;
+        margin: -5px auto -35px;
     }
 
     .loan-icon {
@@ -1531,7 +1471,7 @@ footer {
 
         font-size: 65px;
 
-        right: 30px;
+        right: 25px;
     }
 
     .house-icon {
@@ -1551,7 +1491,9 @@ footer {
     }
 
 
-    /* LOAN CARDS */
+    /* ==================================================
+       LOAN CARDS
+       ================================================== */
 
     .loan-cards-new {
         width: 100%;
@@ -1582,7 +1524,9 @@ footer {
     }
 
 
-    /* FEATURES */
+    /* ==================================================
+       FEATURES
+       ================================================== */
 
     .features-section {
         width: auto;
@@ -1597,8 +1541,7 @@ footer {
     .feature {
         border-right: none;
 
-        border-bottom:
-            1px solid #c9def1;
+        border-bottom: 1px solid #c9def1;
 
         padding: 12px 5px;
     }
@@ -1608,26 +1551,9 @@ footer {
     }
 
 
-    /* OLD HOME */
-
-    .hero {
-        padding: 45px 15px;
-    }
-
-    .hero h2 {
-        font-size: 28px;
-    }
-
-    .loans {
-        padding: 14px;
-
-        margin: 25px auto;
-
-        grid-template-columns: 1fr;
-    }
-
-
-    /* STATUS PAGE */
+    /* ==================================================
+       STATUS
+       ================================================== */
 
     .status-section {
         width: 100%;
@@ -1638,21 +1564,14 @@ footer {
     }
 
     .status-box {
-        padding: 20px 15px;
-
         width: 100%;
+
+        padding: 20px 15px;
     }
 
     .status-box h2 {
         font-size: 23px;
     }
-
-    .status-box input {
-        font-size: 16px;
-    }
-
-
-    /* STATUS CARD */
 
     .status-card {
         width: 100%;
@@ -1681,7 +1600,9 @@ footer {
     }
 
 
-    /* PROGRESS */
+    /* ==================================================
+       PROGRESS
+       ================================================== */
 
     .progress-section {
         padding: 18px;
@@ -1701,11 +1622,14 @@ footer {
 
     .progress-bar {
         line-height: 34px;
+
         font-size: 13px;
     }
 
 
-    /* STATUS DETAILS */
+    /* ==================================================
+       STATUS DETAILS
+       ================================================== */
 
     .status-details {
         padding: 18px;
@@ -1718,7 +1642,9 @@ footer {
     }
 
 
-    /* CHARGE / IDENTITY / BANK */
+    /* ==================================================
+       CHARGE / BANK
+       ================================================== */
 
     .charge-box,
     .identity-details,
@@ -1779,7 +1705,9 @@ footer {
     }
 
 
-    /* LOAN PAGES */
+    /* ==================================================
+       LOAN PAGES
+       ================================================== */
 
     .loan-page {
         width: 100%;
@@ -1805,7 +1733,9 @@ footer {
     }
 
 
-    /* ADMIN */
+    /* ==================================================
+       ADMIN
+       ================================================== */
 
     .admin-section {
         width: 100%;
@@ -1831,7 +1761,9 @@ footer {
     }
 
 
-    /* CUSTOMER RECORD */
+    /* ==================================================
+       CUSTOMER RECORD
+       ================================================== */
 
     .customer-record {
         width: 100%;
@@ -1842,7 +1774,9 @@ footer {
     }
 
 
-    /* NOTICE */
+    /* ==================================================
+       NOTICE
+       ================================================== */
 
     .admin-notice {
         margin: 15px 12px;
@@ -1851,7 +1785,9 @@ footer {
     }
 
 
-    /* FOOTER */
+    /* ==================================================
+       FOOTER
+       ================================================== */
 
     footer {
         padding: 18px 12px;
@@ -1884,10 +1820,14 @@ footer {
         font-size: 27px;
     }
 
-    .main-nav a {
-        font-size: 12px;
+    .main-nav {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
 
-        padding: 8px 3px;
+    .main-nav a {
+        font-size: 9.5px;
+        padding: 8px 1px;
     }
 
     .hero-content h2 {
@@ -1899,7 +1839,7 @@ footer {
     }
 
     .hero-visual {
-        transform: scale(0.65);
+        transform: scale(0.62);
     }
 }
 
