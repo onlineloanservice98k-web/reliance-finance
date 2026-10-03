@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Check Status - Finance Demo</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="top-header">
+
+    <div class="logo-area">
+
+        <div class="finance-logo">
+            <span>R</span>
+            <small>▮▮▮</small>
+        </div>
+
+        <div>
+            <h1>Reliance Finance - Demo</h1>
+            <p>Loan Information & Services</p>
+        </div>
+
+    </div>
+
+</header>
+
+
+<nav class="main-nav">
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="personal-loan.html">
+        Personal Loan
+    </a>
+
+    <a href="business-loan.html">
+        Business Loan
+    </a>
+
+    <a href="home-loan.html">
+        Home Loan
+    </a>
+
+    <a href="status.html" class="active">
+        Check Status
+    </a>
+
+</nav>
+
+
+<section class="status-section">
+
+    <div class="status-box">
+
+        <h2>
+            Check Your Loan Status
+        </h2>
+
+        <p>
+            Enter your registered mobile number
+        </p>
+
+        <input
+            type="tel"
+            id="mobileNumber"
+            placeholder="Enter 10 Digit Mobile Number"
+            maxlength="10"
+            inputmode="numeric"
+        >
+
+        <button
+            type="button"
+            onclick="checkStatus()"
+        >
+            Check Status
+        </button>
+
+        <div id="statusResult"></div>
+
+    </div>
+
+</section>
+
+
+<section class="admin-notice">
+
+    <p>
+
+        <b>Finance Demo:</b>
+
+        This page displays demonstration
+        application information only.
+
+    </p>
+
+</section>
+
+
+<footer>
+
+    <p>
+        Finance Demo - Demonstration Website
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
