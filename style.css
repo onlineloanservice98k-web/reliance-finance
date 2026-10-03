@@ -16,7 +16,7 @@ html {
 
 body {
     width: 100%;
-    min-width: 0;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
     background: #f4f8fc;
     color: #222;
@@ -24,14 +24,9 @@ body {
     overflow-x: hidden;
 }
 
-img {
-    max-width: 100%;
-}
-
-
 /* ==================================================
    COMMON HEADER
-   ================================================== */
+================================================== */
 
 header {
     background: #0757a8;
@@ -51,7 +46,7 @@ header p {
 
 /* ==================================================
    HOME HEADER
-   ================================================== */
+================================================== */
 
 .top-header {
     width: 100%;
@@ -81,12 +76,12 @@ header p {
 
 /* ==================================================
    LOGO
-   ================================================== */
+================================================== */
 
 .finance-logo {
     width: 62px;
     height: 62px;
-    flex-shrink: 0;
+    min-width: 62px;
     border-radius: 17px;
     background: linear-gradient(135deg,#0757a8,#1687ff);
     color: white;
@@ -112,8 +107,8 @@ header p {
 
 
 /* ==================================================
-   NORMAL NAV
-   ================================================== */
+   OLD NAVIGATION
+================================================== */
 
 nav {
     background: white;
@@ -132,21 +127,23 @@ nav a {
     font-weight: bold;
 }
 
+nav a:hover {
+    color: #043d76;
+}
+
 
 /* ==================================================
-   MAIN NAVBAR
-   ================================================== */
+   MAIN NAVIGATION
+================================================== */
 
 .main-nav {
     width: 100%;
     background: #0757a8;
     padding: 12px 15px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    gap: 12px;
+    gap: 28px;
     flex-wrap: wrap;
 }
 
@@ -154,13 +151,10 @@ nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-
     padding: 9px 16px;
-    border-radius: 8px;
-
+    border-radius: 7px;
     transition: .3s;
     white-space: nowrap;
-    text-align: center;
 }
 
 .main-nav a:hover,
@@ -172,33 +166,22 @@ nav a {
 
 /* ==================================================
    HOME HERO
-   ================================================== */
+================================================== */
 
 .hero-new {
     width: 100%;
     min-height: 390px;
-
     padding: 60px 9%;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     gap: 40px;
-
     color: white;
-
-    background: linear-gradient(
-        135deg,
-        #0757a8,
-        #1687ff
-    );
-
+    background: linear-gradient(135deg,#0757a8,#1687ff);
     overflow: hidden;
 }
 
 .hero-content {
-    width: 100%;
     max-width: 600px;
 }
 
@@ -206,6 +189,7 @@ nav a {
     font-size: 17px;
     letter-spacing: 2px;
     font-weight: bold;
+    opacity: .95;
 }
 
 .hero-content h2 {
@@ -222,149 +206,115 @@ nav a {
 
 .hero-button {
     display: inline-block;
-
     background: white;
     color: #0757a8;
-
     padding: 14px 25px;
-
     border-radius: 9px;
-
     text-decoration: none;
-
     font-weight: bold;
     font-size: 16px;
-
     box-shadow: 0 5px 15px rgba(0,0,0,.15);
+    transition: .3s;
+}
+
+.hero-button:hover {
+    transform: translateY(-2px);
 }
 
 
 /* ==================================================
    HERO VISUAL
-   ================================================== */
+================================================== */
 
 .hero-visual {
     position: relative;
-
     width: 390px;
     height: 260px;
-
     flex-shrink: 0;
 }
 
 .loan-icon {
     position: absolute;
-
     right: 45px;
     bottom: 10px;
-
     width: 145px;
     height: 145px;
-
     border-radius: 50%;
-
-    background: linear-gradient(
-        145deg,
-        #fff,
-        #dceeff
-    );
-
+    background: linear-gradient(145deg,#fff,#dceeff);
     color: #0757a8;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 75px;
     font-weight: bold;
-
     box-shadow: 0 15px 30px rgba(0,0,0,.18);
 }
 
 .house-icon {
     position: absolute;
-
     left: 15px;
     bottom: 30px;
-
     font-size: 100px;
-
-    filter: drop-shadow(
-        0 8px 8px rgba(0,0,0,.2)
-    );
+    filter: drop-shadow(0 8px 8px rgba(0,0,0,.2));
 }
 
 .document-icon {
     position: absolute;
-
     right: 0;
     top: 0;
-
-    width: 150px;
-    height: 115px;
-
     background: white;
     color: #0757a8;
-
+    width: 150px;
+    height: 115px;
     border-radius: 12px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-weight: bold;
     font-size: 24px;
-
     box-shadow: 0 10px 25px rgba(0,0,0,.18);
 }
 
 
 /* ==================================================
-   LOAN CARDS
-   ================================================== */
+   HOME LOAN CARDS
+================================================== */
 
 .loan-cards-new {
     width: 100%;
     max-width: 1200px;
-
     margin: 35px auto;
     padding: 0 20px;
-
     display: grid;
     grid-template-columns: repeat(3,1fr);
-
     gap: 25px;
 }
 
 .loan-card-new {
     background: white;
-
     padding: 25px;
-
     border-radius: 15px;
-
     display: flex;
     align-items: flex-start;
-
     gap: 18px;
-
     box-shadow: 0 5px 20px rgba(0,0,0,.08);
-
     border: 1px solid #e7edf4;
+    transition: .3s;
+}
+
+.loan-card-new:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
 }
 
 .card-icon {
     width: 58px;
     height: 58px;
-
     min-width: 58px;
-
     border-radius: 50%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 27px;
 }
 
@@ -400,23 +350,18 @@ nav a {
 
 /* ==================================================
    FEATURES
-   ================================================== */
+================================================== */
 
 .features-section {
     width: calc(100% - 30px);
     max-width: 1200px;
-
     margin: 25px auto 40px;
     padding: 22px;
-
     background: #edf6ff;
-
     border: 1px solid #d7e9fa;
     border-radius: 16px;
-
     display: grid;
     grid-template-columns: repeat(4,1fr);
-
     gap: 20px;
 }
 
@@ -424,9 +369,7 @@ nav a {
     display: flex;
     align-items: center;
     gap: 13px;
-
     padding: 10px;
-
     border-right: 1px solid #c9def1;
 }
 
@@ -450,8 +393,8 @@ nav a {
 
 
 /* ==================================================
-   OLD HOME
-   ================================================== */
+   OLD HOME ELEMENTS
+================================================== */
 
 .hero {
     background: #0757a8;
@@ -471,41 +414,27 @@ nav a {
 
 .btn {
     display: inline-block;
-
     background: white;
     color: #0757a8;
-
     padding: 12px 25px;
-
     border-radius: 7px;
-
     text-decoration: none;
-
     font-weight: bold;
 }
 
 .loans {
-    width: 100%;
     max-width: 1000px;
-
     margin: 40px auto;
     padding: 20px;
-
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(220px,1fr));
-
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
     gap: 20px;
 }
 
 .card {
     background: white;
-
     padding: 25px;
-
     border-radius: 12px;
-
     box-shadow: 0 3px 12px #ddd;
 }
 
@@ -527,34 +456,26 @@ nav a {
 
 /* ==================================================
    STATUS PAGE
-   ================================================== */
+================================================== */
 
 .status-section {
     width: 100%;
     max-width: 650px;
-
     margin: 45px auto;
     padding: 20px;
 }
 
 .status-box {
-    background: white;
-
+    background: #fff;
     padding: 30px;
-
     border-radius: 16px;
-
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.10);
+    box-shadow: 0 8px 30px rgba(0,0,0,.10);
 }
 
 .status-box h2 {
     color: #0757a8;
-
     font-size: 28px;
-
     margin-bottom: 8px;
-
     text-align: center;
 }
 
@@ -566,81 +487,65 @@ nav a {
 .status-box input {
     width: 100%;
     height: 50px;
-
     margin: 18px 0 12px;
-
     padding: 13px;
-
     font-size: 16px;
-
     border: 1px solid #d5dbe3;
-
     border-radius: 8px;
-
     outline: none;
+}
+
+.status-box input:focus {
+    border-color: #0757a8;
+    box-shadow: 0 0 4px #b7d7f5;
 }
 
 .status-box button {
     width: 100%;
     height: 50px;
-
     border: none;
-
     background: #0757a8;
     color: white;
-
     font-size: 16px;
     font-weight: bold;
-
     border-radius: 8px;
-
     cursor: pointer;
+}
+
+.status-box button:hover {
+    background: #064582;
 }
 
 
 /* ==================================================
    STATUS CARD
-   ================================================== */
+================================================== */
 
 .status-card {
+    width: 100%;
     margin-top: 25px;
-
-    background: white;
-
+    background: #fff;
     border-radius: 18px;
-
+    padding: 0;
     overflow: hidden;
-
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.12);
-
+    box-shadow: 0 8px 30px rgba(0,0,0,.12);
     border: 1px solid #e3e8ef;
 }
 
 .status-header {
-    background:
-        linear-gradient(
-            135deg,
-            #0757a8,
-            #1687ff
-        );
-
+    background: linear-gradient(135deg,#0757a8,#1687ff);
     color: white;
-
     padding: 22px;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     gap: 15px;
 }
 
 .status-header h3 {
     color: white;
     font-size: 25px;
+    margin: 3px 0 0;
 }
 
 .small-label {
@@ -652,21 +557,17 @@ nav a {
 .status-badge {
     background: white;
     color: #0757a8;
-
     padding: 8px 12px;
-
     border-radius: 20px;
-
     font-size: 12px;
     font-weight: bold;
-
     white-space: nowrap;
 }
 
 
 /* ==================================================
-   PROGRESS
-   ================================================== */
+   APPLICATION PROGRESS
+================================================== */
 
 .progress-section {
     padding: 22px;
@@ -675,14 +576,10 @@ nav a {
 
 .progress-title {
     display: flex;
-
     justify-content: space-between;
     align-items: center;
-
     color: #0757a8;
-
     font-weight: bold;
-
     margin-bottom: 10px;
 }
 
@@ -693,70 +590,46 @@ nav a {
 .progress-box {
     width: 100%;
     height: 38px;
-
     background: #e4eaf1;
-
     border-radius: 30px;
-
     overflow: hidden;
 }
 
 .progress-bar {
     height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #0757a8,
-            #1687ff,
-            #00b894
-        );
-
+    background: linear-gradient(90deg,#0757a8,#1687ff,#00b894);
     color: white;
-
     text-align: center;
-
     line-height: 38px;
-
     font-weight: bold;
-
     border-radius: 30px;
-
     min-width: 40px;
+    transition: width .7s ease;
 }
 
 
 /* ==================================================
    STATUS DETAILS
-   ================================================== */
+================================================== */
 
 .status-details {
     padding: 22px;
-
     display: grid;
-
     grid-template-columns: repeat(2,1fr);
-
     gap: 14px;
 }
 
 .status-section-title {
     font-size: 17px;
-
     font-weight: bold;
-
     color: #0757a8;
-
     margin-bottom: 14px;
 }
 
 .detail-item {
     background: #f7f9fc;
-
     border: 1px solid #e5eaf0;
-
     border-radius: 10px;
-
     padding: 14px;
 }
 
@@ -764,11 +637,8 @@ nav a {
 .detail-row span,
 .charge-row span {
     display: block;
-
     color: #777;
-
     font-size: 13px;
-
     margin-bottom: 5px;
 }
 
@@ -781,48 +651,39 @@ nav a {
 
 
 /* ==================================================
-   CHARGE
-   ================================================== */
+   CHARGE DETAILS
+================================================== */
 
 .charge-box {
     margin: 0 22px 20px;
-
     padding: 20px;
-
     background: #f8fbff;
-
     border: 1px solid #dce9f7;
-
     border-radius: 12px;
 }
 
 .charge-row {
     display: flex;
-
     justify-content: space-between;
     align-items: center;
-
     padding: 10px 0;
-
     border-bottom: 1px solid #e3e8ef;
+}
+
+.charge-row:last-of-type {
+    border-bottom: none;
 }
 
 .charge-amount-box {
     margin-top: 15px;
-
     padding: 16px 18px;
-
-    background: #eef6ff;
-
+    background: linear-gradient(135deg,#f4f8ff,#eef6ff);
     border: 1px solid #d7e7f8;
-
     border-radius: 12px;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
+    gap: 15px;
 }
 
 .charge-amount-box span {
@@ -834,17 +695,14 @@ nav a {
 .charge-amount-box strong {
     color: #0757a8;
     font-size: 22px;
+    font-weight: bold;
 }
 
 .charge-description {
     margin-top: 15px;
-
     padding: 15px;
-
     background: #f4f8ff;
-
     border-left: 4px solid #0757a8;
-
     border-radius: 8px;
 }
 
@@ -858,50 +716,47 @@ nav a {
     margin: 0;
     color: #555;
     font-size: 14px;
+    line-height: 1.5;
 }
 
 
 /* ==================================================
-   IDENTITY + BANK
-   ================================================== */
+   IDENTITY / BANK
+================================================== */
 
 .identity-details,
 .bank-details {
     margin: 0 22px 20px;
-
     padding: 20px;
-
-    background: white;
-
+    background: #fff;
     border: 1px solid #e5eaf0;
-
     border-radius: 12px;
 }
 
 .detail-row {
     display: flex;
-
     justify-content: space-between;
     align-items: center;
-
     gap: 15px;
-
     padding: 11px 0;
-
     border-bottom: 1px solid #edf0f3;
 }
 
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+
+/* ==================================================
+   ACCOUNT INFORMATION
+================================================== */
+
 .payment-info-box {
     margin-top: 18px;
-
     padding: 16px;
-
     background: #f4f8ff;
-
     border: 1px solid #d8e7f7;
-
     border-left: 4px solid #0757a8;
-
     border-radius: 9px;
 }
 
@@ -915,6 +770,7 @@ nav a {
     margin: 0;
     color: #555;
     font-size: 13px;
+    line-height: 1.5;
 }
 
 .status-demo-text {
@@ -934,16 +790,13 @@ nav a {
 
 /* ==================================================
    LOAN PAGES
-   ================================================== */
+================================================== */
 
 .loan-page {
     width: 100%;
     max-width: 900px;
-
     margin: 40px auto;
-
     padding: 20px;
-
     text-align: center;
 }
 
@@ -958,25 +811,15 @@ nav a {
     color: #555;
 }
 
-.loan-info,
-.info-section {
-    background: white;
-
+.loan-info {
+    background: #fff;
     padding: 25px;
-
     border-radius: 12px;
-
     box-shadow: 0 3px 12px #ddd;
-
     text-align: left;
 }
 
-.info-section {
-    margin-top: 20px;
-}
-
-.loan-info h3,
-.info-section h3 {
+.loan-info h3 {
     color: #0757a8;
     margin-bottom: 15px;
 }
@@ -986,49 +829,51 @@ nav a {
     border-bottom: 1px solid #eee;
 }
 
+.info-section {
+    background: #fff;
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 3px 12px #ddd;
+}
+
+.info-section h3 {
+    color: #0757a8;
+    margin-bottom: 12px;
+}
+
 .info-section li {
     margin: 8px 0;
 }
 
 .loan-btn {
     display: inline-block;
-
     margin-top: 25px;
-
     padding: 13px 22px;
-
     background: #0757a8;
-
     color: white;
-
     text-decoration: none;
-
     border-radius: 8px;
-
     font-weight: bold;
 }
 
 
 /* ==================================================
-   ADMIN
-   ================================================== */
+   ADMIN PANEL
+================================================== */
 
 .admin-section {
     width: 100%;
     max-width: 850px;
-
     margin: 40px auto;
-
     padding: 20px;
 }
 
 .admin-box {
-    background: white;
-
+    background: #fff;
     padding: 30px;
-
     border-radius: 12px;
-
     box-shadow: 0 3px 15px #d9d9d9;
 }
 
@@ -1040,28 +885,27 @@ nav a {
 
 .admin-box label {
     display: block;
-
     margin-top: 16px;
     margin-bottom: 7px;
-
     font-weight: bold;
+    color: #333;
 }
 
 .admin-box input,
 .admin-box select {
     width: 100%;
-
     padding: 13px;
-
     border: 1px solid #cfcfcf;
-
     border-radius: 7px;
-
     font-size: 15px;
-
     outline: none;
+    background: #fff;
+}
 
-    background: white;
+.admin-box input:focus,
+.admin-box select:focus {
+    border-color: #0757a8;
+    box-shadow: 0 0 4px #b7d7f5;
 }
 
 .admin-box small {
@@ -1072,35 +916,26 @@ nav a {
 
 .admin-box button[type="submit"] {
     width: 100%;
-
     margin-top: 28px;
-
     padding: 14px;
-
     border: none;
-
     border-radius: 7px;
-
     background: #0757a8;
-
     color: white;
-
     font-size: 16px;
-
     font-weight: bold;
-
     cursor: pointer;
+}
+
+.admin-box button[type="submit"]:hover {
+    background: #064582;
 }
 
 .customer-record {
     background: #f4f7fb;
-
     padding: 18px;
-
     margin-bottom: 18px;
-
     border-radius: 10px;
-
     border-left: 4px solid #0757a8;
 }
 
@@ -1116,82 +951,73 @@ nav a {
 
 .edit-customer-btn {
     width: 100%;
-
     margin-top: 15px;
-
     padding: 12px;
-
     border: none;
-
     border-radius: 7px;
-
     background: #0757a8;
-
     color: white;
-
     font-weight: bold;
+    cursor: pointer;
+}
+
+.edit-customer-btn:hover {
+    background: #064582;
 }
 
 .admin-subtitle {
     color: #0757a8;
-
     margin-top: 30px;
     margin-bottom: 10px;
-
     border-bottom: 1px solid #ddd;
-
     padding-bottom: 10px;
 }
 
+
+/* ==================================================
+   DEMO NOTICE
+================================================== */
+
 .admin-notice {
-    width: calc(100% - 24px);
+    width: calc(100% - 30px);
     max-width: 850px;
-
     margin: 20px auto;
-
     padding: 15px 20px;
-
     background: #fff3cd;
-
     border-radius: 8px;
-
     text-align: center;
-
     font-size: 14px;
 }
 
 
 /* ==================================================
    FOOTER
-   ================================================== */
+================================================== */
 
 footer {
     width: 100%;
-
     background: #0757a8;
-
     color: white;
-
     text-align: center;
-
     padding: 20px;
-
     margin-top: 30px;
 }
 
 
 /* ==================================================
    TABLET
-   ================================================== */
+================================================== */
 
 @media (max-width: 800px) {
 
     .hero-new {
         flex-direction: column;
-
         text-align: center;
-
         padding: 50px 20px;
+    }
+
+    .hero-content {
+        max-width: 100%;
     }
 
     .hero-content p {
@@ -1216,14 +1042,20 @@ footer {
         border-right: none;
         border-bottom: 1px solid #c9def1;
     }
+
+    .feature:last-child {
+        border-bottom: none;
+    }
 }
 
 
 /* ==================================================
-   MOBILE - FULL FIX
-   ================================================== */
+   MOBILE
+================================================== */
 
 @media (max-width: 600px) {
+
+    /* BODY */
 
     body {
         width: 100%;
@@ -1233,9 +1065,20 @@ footer {
 
     /* HEADER */
 
+    header {
+        padding: 18px 12px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+
+    /* TOP HEADER */
+
     .top-header {
         width: 100%;
-        padding: 12px 14px;
+        padding: 14px 12px;
     }
 
     .logo-area {
@@ -1243,23 +1086,8 @@ footer {
         gap: 10px;
     }
 
-    .finance-logo {
-        width: 50px;
-        height: 50px;
-    }
-
-    .finance-logo span {
-        font-size: 31px;
-    }
-
-    .finance-logo small {
-        font-size: 7px;
-        bottom: 5px;
-    }
-
     .logo-area h1 {
         font-size: 21px;
-        line-height: 1.2;
     }
 
     .logo-area p {
@@ -1267,72 +1095,66 @@ footer {
     }
 
 
-    /* ==========================================
-       MOBILE NAVBAR
-       ========================================== */
+    /* LOGO */
+
+    .finance-logo {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        border-radius: 14px;
+    }
+
+    .finance-logo span {
+        font-size: 32px;
+    }
+
+    .finance-logo small {
+        font-size: 7px;
+        bottom: 5px;
+    }
+
+
+    /* ==================================================
+       MOBILE NAV - IMPORTANT FIX
+    ================================================== */
 
     .main-nav {
         width: 100%;
-
-        display: grid;
-
-        grid-template-columns: 1fr 1fr;
-
-        gap: 7px;
-
-        padding: 10px;
-
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 12px;
         background: #0757a8;
     }
 
     .main-nav a {
         width: 100%;
-
-        min-width: 0;
-
-        padding: 11px 4px;
-
-        font-size: 14px;
-
-        line-height: 1.2;
-
-        white-space: normal;
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-
-        border-radius: 8px;
-
+        display: block;
         text-align: center;
+        padding: 13px 10px;
+        margin: 2px 0;
+        font-size: 16px;
+        line-height: 1.2;
+        border-radius: 8px;
+        white-space: nowrap;
     }
 
-    .main-nav a:last-child {
-        grid-column: 1 / 3;
-
-        width: 55%;
-
-        justify-self: center;
+    .main-nav a:hover,
+    .main-nav a.active {
+        background: white;
+        color: #0757a8;
     }
 
 
-    /* ==========================================
-       HERO
-       ========================================== */
+    /* HERO */
 
     .hero-new {
         width: 100%;
-
         min-height: auto;
-
         padding: 45px 18px 25px;
-
-        display: flex;
-
-        flex-direction: column;
-
-        text-align: center;
-
         gap: 10px;
     }
 
@@ -1343,104 +1165,71 @@ footer {
 
     .welcome-text {
         font-size: 14px;
+        letter-spacing: 2px;
     }
 
     .hero-content h2 {
         font-size: 38px;
-        line-height: 1.1;
+        line-height: 1.12;
         word-break: normal;
     }
 
     .hero-content p {
         width: 100%;
-
+        max-width: 100%;
         font-size: 16px;
-
         line-height: 1.5;
-
         margin-bottom: 25px;
     }
 
     .hero-button {
         padding: 13px 22px;
+        font-size: 16px;
     }
 
 
-    /* ==========================================
-       HERO IMAGE AREA
-       ========================================== */
+    /* HERO VISUAL */
 
     .hero-visual {
-        width: 300px;
+        width: 310px;
         max-width: 100%;
-
-        height: 205px;
-
+        height: 210px;
         transform: scale(.72);
-
-        margin: -15px auto -25px;
+        margin-top: -15px;
+        margin-bottom: -25px;
     }
 
 
-    /* ==========================================
-       LOAN CARDS
-       ========================================== */
+    /* LOAN CARDS */
 
     .loan-cards-new {
         width: 100%;
-
         margin: 20px auto;
-
         padding: 0 14px;
-
-        display: grid;
-
         grid-template-columns: 1fr;
-
-        gap: 18px;
+        gap: 16px;
     }
 
     .loan-card-new {
         width: 100%;
-
         padding: 20px;
-
-        gap: 16px;
-
-        border-radius: 15px;
-    }
-
-    .card-icon {
-        width: 58px;
-        min-width: 58px;
-    }
-
-    .loan-card-new h3 {
-        font-size: 25px;
     }
 
 
-    /* ==========================================
-       FEATURES
-       ========================================== */
+    /* FEATURES */
 
     .features-section {
         width: calc(100% - 28px);
-
-        margin: 20px 14px 30px;
-
-        padding: 15px;
-
         grid-template-columns: 1fr;
-
+        margin: 20px 14px 30px;
+        padding: 15px;
         gap: 0;
     }
 
     .feature {
+        width: 100%;
         border-right: none;
-
         border-bottom: 1px solid #c9def1;
-
         padding: 12px 5px;
     }
 
@@ -1449,27 +1238,25 @@ footer {
     }
 
 
-    /* ==========================================
-       STATUS
-       ========================================== */
+    /* STATUS */
 
     .status-section {
         width: 100%;
-
         margin: 20px auto;
-
         padding: 12px;
     }
 
     .status-box {
         width: 100%;
-
         padding: 20px 15px;
     }
 
     .status-box h2 {
         font-size: 23px;
     }
+
+
+    /* STATUS CARD */
 
     .status-card {
         width: 100%;
@@ -1478,42 +1265,50 @@ footer {
 
     .status-header {
         padding: 18px;
-
-        flex-direction: column;
-
         align-items: flex-start;
+        flex-direction: column;
     }
 
     .status-header h3 {
         font-size: 22px;
     }
 
+    .status-badge {
+        font-size: 11px;
+    }
+
+
+    /* PROGRESS */
+
     .progress-section {
         padding: 18px;
     }
 
-    .status-details {
-        padding: 18px;
+    .progress-box {
+        height: 36px;
+    }
 
+    .progress-bar {
+        line-height: 36px;
+    }
+
+
+    /* STATUS DETAILS */
+
+    .status-details {
+        width: 100%;
+        padding: 18px;
         grid-template-columns: 1fr;
     }
+
+
+    /* CHARGE */
 
     .charge-box,
     .identity-details,
     .bank-details {
         margin-left: 18px;
         margin-right: 18px;
-    }
-
-    .detail-row {
-        display: block;
-    }
-
-    .detail-row b {
-        display: block;
-        margin-top: 4px;
-
-        word-break: break-word;
     }
 
     .charge-row {
@@ -1534,15 +1329,24 @@ footer {
     }
 
 
-    /* ==========================================
-       LOAN PAGES
-       ========================================== */
+    /* DETAILS */
+
+    .detail-row {
+        display: block;
+    }
+
+    .detail-row b {
+        display: block;
+        margin-top: 4px;
+        word-break: break-word;
+    }
+
+
+    /* LOAN PAGES */
 
     .loan-page {
         width: 100%;
-
         margin: 20px auto;
-
         padding: 15px;
     }
 
@@ -1552,26 +1356,20 @@ footer {
 
     .loan-info,
     .info-section {
-        width: 100%;
         padding: 20px 15px;
     }
 
 
-    /* ==========================================
-       ADMIN
-       ========================================== */
+    /* ADMIN */
 
     .admin-section {
         width: 100%;
-
         margin: 20px auto;
-
         padding: 12px;
     }
 
     .admin-box {
         width: 100%;
-
         padding: 20px 15px;
     }
 
@@ -1581,20 +1379,14 @@ footer {
 
     .admin-notice {
         width: calc(100% - 24px);
-
         margin: 15px 12px;
     }
 
 
-    /* ==========================================
-       FOOTER
-       ========================================== */
+    /* FOOTER */
 
     footer {
-        width: 100%;
-
         padding: 18px 12px;
-
         font-size: 13px;
     }
 }
@@ -1602,7 +1394,7 @@ footer {
 
 /* ==================================================
    VERY SMALL MOBILE
-   ================================================== */
+================================================== */
 
 @media (max-width: 380px) {
 
@@ -1614,34 +1406,37 @@ footer {
         font-size: 11px;
     }
 
-    .main-nav {
-        gap: 5px;
-        padding: 8px;
+    .finance-logo {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+    }
+
+    .finance-logo span {
+        font-size: 29px;
     }
 
     .main-nav a {
-        font-size: 12px;
-        padding: 10px 3px;
-    }
-
-    .main-nav a:last-child {
-        width: 65%;
+        font-size: 15px;
+        padding: 12px 8px;
     }
 
     .hero-content h2 {
-        font-size: 32px;
+        font-size: 34px;
     }
 
     .hero-content p {
         font-size: 15px;
     }
 
-    .loan-card-new h3 {
-        font-size: 22px;
+    .hero-visual {
+        transform: scale(.62);
+        margin-top: -25px;
+        margin-bottom: -40px;
     }
 }
 
 
 /* ==================================================
    END
-   ================================================== */
+================================================== */
