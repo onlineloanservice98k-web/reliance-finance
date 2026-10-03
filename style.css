@@ -122,7 +122,9 @@ nav a:hover {
 }
 
 
-/* NEW HOME NAV */
+/* ==================================================
+   NEW HOME NAV
+   ================================================== */
 
 .main-nav {
     background: #0757a8;
@@ -163,7 +165,6 @@ nav a:hover {
     gap: 40px;
     color: white;
 
-    /* Circle removed */
     background: linear-gradient(
         135deg,
         #0757a8,
@@ -1193,7 +1194,9 @@ nav a:hover {
 }
 
 
-/* CUSTOMER RECORD */
+/* ==================================================
+   CUSTOMER RECORD
+   ================================================== */
 
 .customer-record {
     background: #f4f7fb;
@@ -1222,7 +1225,9 @@ nav a:hover {
 }
 
 
-/* EDIT BUTTON */
+/* ==================================================
+   EDIT BUTTON
+   ================================================== */
 
 .edit-customer-btn {
     width: 100%;
@@ -1249,7 +1254,9 @@ nav a:hover {
 }
 
 
-/* ADMIN SUBTITLE */
+/* ==================================================
+   ADMIN SUBTITLE
+   ================================================== */
 
 .admin-subtitle {
     color: #0757a8;
@@ -1317,6 +1324,10 @@ footer {
         padding: 50px 20px;
     }
 
+    .hero-content {
+        width: 100%;
+    }
+
     .hero-content p {
         margin-left: auto;
         margin-right: auto;
@@ -1355,6 +1366,16 @@ footer {
 
 @media (max-width: 600px) {
 
+    /* BODY */
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+
+    /* COMMON HEADER */
+
     header {
         padding: 18px 12px;
     }
@@ -1364,10 +1385,10 @@ footer {
     }
 
 
-    /* HEADER */
+    /* TOP HEADER */
 
     .top-header {
-        padding: 14px;
+        padding: 12px 15px;
     }
 
     .logo-area {
@@ -1375,99 +1396,197 @@ footer {
     }
 
     .logo-area h1 {
-        font-size: 21px;
+        font-size: 20px;
+        line-height: 1.2;
     }
 
     .logo-area p {
-        font-size: 12px;
+        font-size: 11px;
     }
 
 
     /* LOGO */
 
     .finance-logo {
-        width: 50px;
-        height: 50px;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        flex-shrink: 0;
     }
 
     .finance-logo span {
-        font-size: 32px;
+        font-size: 30px;
     }
 
     .finance-logo small {
-        font-size: 7px;
-
-        bottom: 5px;
+        font-size: 6px;
+        bottom: 4px;
     }
 
 
-    /* NAV */
+    /* MOBILE NAVIGATION */
 
     .main-nav {
-        gap: 5px;
+        width: 100%;
 
-        padding: 9px 5px;
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 6px;
+
+        padding: 8px;
     }
 
     .main-nav a {
-        font-size: 12px;
+        width: 100%;
 
-        padding: 7px 8px;
+        text-align: center;
+
+        font-size: 13px;
+
+        padding: 9px 5px;
+
+        border-radius: 7px;
+
+        white-space: nowrap;
+    }
+
+    .main-nav a:last-child {
+        grid-column: 1 / -1;
     }
 
 
     /* HERO */
 
     .hero-new {
+        width: 100%;
+
         min-height: auto;
 
-        padding: 45px 18px 25px;
+        padding: 40px 16px 20px;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 10px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .welcome-text {
+        font-size: 13px;
+
+        letter-spacing: 1.5px;
     }
 
     .hero-content h2 {
-        font-size: 38px;
+        font-size: 36px;
+
+        line-height: 1.15;
+
+        margin: 8px 0 14px;
+
+        word-break: normal;
     }
 
     .hero-content p {
         font-size: 16px;
+
+        line-height: 1.5;
+
+        margin: 0 auto 22px;
+
+        max-width: 100%;
     }
 
-    .welcome-text {
-        font-size: 14px;
+    .hero-button {
+        padding: 13px 22px;
+
+        font-size: 15px;
     }
 
 
     /* HERO VISUAL */
 
     .hero-visual {
-        width: 310px;
+        width: 280px;
 
-        height: 210px;
+        height: 190px;
 
         transform: scale(0.72);
 
-        margin-top: -20px;
+        margin: -10px auto -25px;
+    }
 
-        margin-bottom: -25px;
+    .loan-icon {
+        width: 125px;
+
+        height: 125px;
+
+        font-size: 65px;
+
+        right: 30px;
+    }
+
+    .house-icon {
+        font-size: 85px;
+
+        left: 5px;
+
+        bottom: 25px;
+    }
+
+    .document-icon {
+        width: 125px;
+
+        height: 95px;
+
+        font-size: 21px;
     }
 
 
     /* LOAN CARDS */
 
     .loan-cards-new {
+        width: 100%;
+
         margin: 20px auto;
 
         padding: 0 14px;
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
     }
 
     .loan-card-new {
-        padding: 20px;
+        width: 100%;
+
+        padding: 18px;
+
+        gap: 14px;
+    }
+
+    .loan-card-new h3 {
+        font-size: 20px;
+    }
+
+    .loan-card-new p {
+        font-size: 14px;
     }
 
 
     /* FEATURES */
 
     .features-section {
+        width: auto;
+
         grid-template-columns: 1fr;
 
         margin: 20px 14px 30px;
@@ -1476,6 +1595,8 @@ footer {
     }
 
     .feature {
+        border-right: none;
+
         border-bottom:
             1px solid #c9def1;
 
@@ -1487,9 +1608,30 @@ footer {
     }
 
 
-    /* STATUS */
+    /* OLD HOME */
+
+    .hero {
+        padding: 45px 15px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    .loans {
+        padding: 14px;
+
+        margin: 25px auto;
+
+        grid-template-columns: 1fr;
+    }
+
+
+    /* STATUS PAGE */
 
     .status-section {
+        width: 100%;
+
         margin: 20px auto;
 
         padding: 12px;
@@ -1497,14 +1639,24 @@ footer {
 
     .status-box {
         padding: 20px 15px;
+
+        width: 100%;
     }
 
     .status-box h2 {
         font-size: 23px;
     }
 
+    .status-box input {
+        font-size: 16px;
+    }
+
+
+    /* STATUS CARD */
 
     .status-card {
+        width: 100%;
+
         border-radius: 14px;
     }
 
@@ -1518,15 +1670,42 @@ footer {
 
     .status-header h3 {
         font-size: 22px;
+
+        word-break: break-word;
     }
 
     .status-badge {
         font-size: 11px;
+
+        white-space: normal;
     }
+
+
+    /* PROGRESS */
 
     .progress-section {
         padding: 18px;
     }
+
+    .progress-title {
+        gap: 10px;
+    }
+
+    .progress-title b {
+        font-size: 18px;
+    }
+
+    .progress-box {
+        height: 34px;
+    }
+
+    .progress-bar {
+        line-height: 34px;
+        font-size: 13px;
+    }
+
+
+    /* STATUS DETAILS */
 
     .status-details {
         padding: 18px;
@@ -1534,12 +1713,21 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .status-section-title {
+        font-size: 16px;
+    }
+
+
+    /* CHARGE / IDENTITY / BANK */
+
     .charge-box,
     .identity-details,
     .bank-details {
         margin-left: 18px;
 
         margin-right: 18px;
+
+        padding: 17px;
     }
 
     .detail-row {
@@ -1550,6 +1738,8 @@ footer {
         display: block;
 
         margin-top: 4px;
+
+        word-break: break-word;
     }
 
     .charge-row {
@@ -1560,20 +1750,40 @@ footer {
         display: block;
 
         margin-top: 4px;
+
+        word-break: break-word;
     }
 
     .charge-amount-box {
         padding: 14px;
+
+        gap: 10px;
+    }
+
+    .charge-amount-box span {
+        font-size: 13px;
     }
 
     .charge-amount-box strong {
         font-size: 19px;
+
+        white-space: nowrap;
+    }
+
+    .charge-description p {
+        font-size: 13px;
+    }
+
+    .payment-info-box p {
+        font-size: 12px;
     }
 
 
     /* LOAN PAGES */
 
     .loan-page {
+        width: 100%;
+
         margin: 20px auto;
 
         padding: 15px;
@@ -1583,8 +1793,14 @@ footer {
         font-size: 25px;
     }
 
+    .loan-page > p {
+        font-size: 14px;
+    }
+
     .loan-info,
     .info-section {
+        width: 100%;
+
         padding: 20px 15px;
     }
 
@@ -1592,12 +1808,16 @@ footer {
     /* ADMIN */
 
     .admin-section {
+        width: 100%;
+
         margin: 20px auto;
 
         padding: 12px;
     }
 
     .admin-box {
+        width: 100%;
+
         padding: 20px 15px;
     }
 
@@ -1605,11 +1825,81 @@ footer {
         font-size: 21px;
     }
 
+    .admin-box input,
+    .admin-box select {
+        font-size: 16px;
+    }
+
+
+    /* CUSTOMER RECORD */
+
+    .customer-record {
+        width: 100%;
+
+        padding: 15px;
+
+        overflow-wrap: anywhere;
+    }
+
 
     /* NOTICE */
 
     .admin-notice {
         margin: 15px 12px;
+
+        font-size: 13px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 18px 12px;
+
+        font-size: 13px;
+    }
+}
+
+
+/* ==================================================
+   VERY SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 380px) {
+
+    .logo-area h1 {
+        font-size: 18px;
+    }
+
+    .logo-area p {
+        font-size: 10px;
+    }
+
+    .finance-logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .finance-logo span {
+        font-size: 27px;
+    }
+
+    .main-nav a {
+        font-size: 12px;
+
+        padding: 8px 3px;
+    }
+
+    .hero-content h2 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .hero-visual {
+        transform: scale(0.65);
     }
 }
 
