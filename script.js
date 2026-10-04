@@ -1,11 +1,68 @@
 /* =========================================
-   FINANCE DEMO - COMPLETE SCRIPT
+   RELIANCE FINANCE DEMO
+   SUPABASE DATABASE SCRIPT
 ========================================= */
 
-let editingCustomerIndex = -1;
+
+/* =========================================
+   SUPABASE CONFIG
+========================================= */
+
+const SUPABASE_URL =
+    "https://pqiyyncfazpwwurabsqn.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_LDWGEx2VVbC93GyeVUsMQg_RyLHgFpN";
+
+
+/* =========================================
+   DATABASE HEADERS
+========================================= */
+
+const SUPABASE_HEADERS = {
+
+    "apikey": SUPABASE_KEY,
+
+    "Authorization":
+        "Bearer " + SUPABASE_KEY,
+
+    "Content-Type":
+        "application/json",
+
+    "Prefer":
+        "return=representation"
+
+};
+
+
+/* =========================================
+   CUSTOMER STATE
+========================================= */
+
+let editingCustomerId = null;
 
 const customerForm =
     document.getElementById("customerForm");
+
+
+/* =========================================
+   HTML SECURITY
+========================================= */
+
+function escapeHtml(value) {
+
+    if (value === null || value === undefined) {
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
 
 
 /* =========================================
@@ -78,191 +135,8 @@ function getChargeDescription(charge) {
 
         default:
             return "Charge information is shown according to the application details.";
+
     }
-}
-
-
-/* =========================================
-   SAVE / UPDATE CUSTOMER
-========================================= */
-
-if (customerForm) {
-
-    customerForm.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-
-        const customer = {
-
-            customerName:
-                document.getElementById("customerName").value.trim(),
-
-            mobileNumber:
-                document.getElementById("mobileNumber").value.trim(),
-
-            loanType:
-                document.getElementById("loanType").value,
-
-            loanAmount:
-                document.getElementById("loanAmount").value,
-
-            aadhaarLast4:
-                document.getElementById("aadhaarLast4").value.trim(),
-
-            panLast4:
-                document.getElementById("panLast4").value.trim(),
-
-            returnYear:
-                document.getElementById("returnYear").value.trim(),
-
-            charge:
-                document.getElementById("charge").value,
-
-            chargeAmount:
-                document.getElementById("chargeAmount").value,
-
-            percentage:
-                document.getElementById("percentage").value,
-
-            bankName:
-                document.getElementById("bankName").value.trim(),
-
-            accountHolderName:
-                document.getElementById("accountHolderName").value.trim(),
-
-            accountNumber:
-                document.getElementById("accountNumber").value.trim(),
-
-            ifscCode:
-                document.getElementById("ifscCode").value.trim(),
-
-            upiNumber:
-                document.getElementById("upiNumber").value.trim(),
-
-            submittedAt:
-                new Date().toLocaleString()
-
-        };
-
-
-        /* MOBILE VALIDATION */
-
-        if (!/^[0-9]{10}$/.test(customer.mobileNumber)) {
-
-            showAdminMessage(
-                "Please enter a valid 10 digit mobile number.",
-                "red"
-            );
-
-            return;
-        }
-
-
-        /* AADHAAR LAST 4 */
-
-        if (
-            customer.aadhaarLast4 &&
-            !/^[0-9]{4}$/.test(customer.aadhaarLast4)
-        ) {
-
-            showAdminMessage(
-                "Aadhaar में केवल आखिरी 4 digits डालें.",
-                "red"
-            );
-
-            return;
-        }
-
-
-        /* PAN LAST 4 */
-
-        if (
-            customer.panLast4 &&
-            !/^[A-Za-z0-9]{4}$/.test(customer.panLast4)
-        ) {
-
-            showAdminMessage(
-                "PAN में केवल आखिरी 4 characters डालें.",
-                "red"
-            );
-
-            return;
-        }
-
-
-        /* PROGRESS VALIDATION */
-
-        if (
-            customer.percentage !== "" &&
-            (
-                Number(customer.percentage) < 0 ||
-                Number(customer.percentage) > 100
-            )
-        ) {
-
-            showAdminMessage(
-                "Progress 0 से 100 के बीच होना चाहिए.",
-                "red"
-            );
-
-            return;
-        }
-
-
-        let customers =
-            JSON.parse(
-                localStorage.getItem("relianceCustomers")
-            ) || [];
-
-
-        /* UPDATE CUSTOMER */
-
-        if (editingCustomerIndex !== -1) {
-
-            customers[editingCustomerIndex] = customer;
-
-            localStorage.setItem(
-                "relianceCustomers",
-                JSON.stringify(customers)
-            );
-
-            showAdminMessage(
-                "Customer details updated successfully.",
-                "green"
-            );
-
-            editingCustomerIndex = -1;
-
-            customerForm.reset();
-
-            setSubmitButton("Submit Customer");
-
-            loadCustomers();
-
-            return;
-        }
-
-
-        /* ADD CUSTOMER */
-
-        customers.push(customer);
-
-        localStorage.setItem(
-            "relianceCustomers",
-            JSON.stringify(customers)
-        );
-
-        showAdminMessage(
-            "Customer details saved successfully.",
-            "green"
-        );
-
-        customerForm.reset();
-
-        loadCustomers();
-
-    });
 
 }
 
@@ -276,7 +150,9 @@ function showAdminMessage(message, color) {
     const box =
         document.getElementById("adminMessage");
 
-    if (!box) return;
+    if (!box) {
+        return;
+    }
 
     box.innerText = message;
 
@@ -295,7 +171,9 @@ function showAdminMessage(message, color) {
 
 function setSubmitButton(text) {
 
-    if (!customerForm) return;
+    if (!customerForm) {
+        return;
+    }
 
     const button =
         customerForm.querySelector(
@@ -303,10 +181,432 @@ function setSubmitButton(text) {
         );
 
     if (button) {
-
         button.innerText = text;
+    }
+
+}
+
+
+/* =========================================
+   GET CUSTOMERS FROM SUPABASE
+========================================= */
+
+async function getCustomers() {
+
+    try {
+
+        const response =
+            await fetch(
+                SUPABASE_URL +
+                "/rest/v1/customers?select=*&order=id.desc",
+                {
+                    method: "GET",
+                    headers: SUPABASE_HEADERS
+                }
+            );
+
+
+        if (!response.ok) {
+
+            const errorText =
+                await response.text();
+
+            throw new Error(errorText);
+
+        }
+
+
+        return await response.json();
 
     }
+
+    catch (error) {
+
+        console.error(
+            "Supabase Load Error:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================
+   SAVE CUSTOMER TO SUPABASE
+========================================= */
+
+async function saveCustomer(customer) {
+
+    try {
+
+        const response =
+            await fetch(
+                SUPABASE_URL +
+                "/rest/v1/customers",
+                {
+                    method: "POST",
+                    headers: SUPABASE_HEADERS,
+                    body: JSON.stringify(customer)
+                }
+            );
+
+
+        if (!response.ok) {
+
+            const errorText =
+                await response.text();
+
+            throw new Error(errorText);
+
+        }
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Supabase Save Error:",
+            error
+        );
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================
+   UPDATE CUSTOMER IN SUPABASE
+========================================= */
+
+async function updateCustomer(id, customer) {
+
+    try {
+
+        const response =
+            await fetch(
+                SUPABASE_URL +
+                "/rest/v1/customers?id=eq." +
+                encodeURIComponent(id),
+                {
+                    method: "PATCH",
+                    headers: SUPABASE_HEADERS,
+                    body: JSON.stringify(customer)
+                }
+            );
+
+
+        if (!response.ok) {
+
+            const errorText =
+                await response.text();
+
+            throw new Error(errorText);
+
+        }
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Supabase Update Error:",
+            error
+        );
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================================
+   SAVE / UPDATE CUSTOMER
+========================================= */
+
+if (customerForm) {
+
+    customerForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const customer = {
+
+                customer_name:
+                    document
+                        .getElementById("customerName")
+                        .value
+                        .trim(),
+
+                mobile_number:
+                    document
+                        .getElementById("mobileNumber")
+                        .value
+                        .trim(),
+
+                loan_type:
+                    document
+                        .getElementById("loanType")
+                        .value,
+
+                loan_amount:
+                    document
+                        .getElementById("loanAmount")
+                        .value || null,
+
+                aadhaar_last4:
+                    document
+                        .getElementById("aadhaarLast4")
+                        .value
+                        .trim(),
+
+                pan_last4:
+                    document
+                        .getElementById("panLast4")
+                        .value
+                        .trim(),
+
+                return_year:
+                    document
+                        .getElementById("returnYear")
+                        .value
+                        .trim(),
+
+                charge:
+                    document
+                        .getElementById("charge")
+                        .value,
+
+                charge_amount:
+                    document
+                        .getElementById("chargeAmount")
+                        .value || null,
+
+                percentage:
+                    document
+                        .getElementById("percentage")
+                        .value || 0,
+
+                bank_name:
+                    document
+                        .getElementById("bankName")
+                        .value
+                        .trim(),
+
+                account_holder_name:
+                    document
+                        .getElementById("accountHolderName")
+                        .value
+                        .trim(),
+
+                account_number:
+                    document
+                        .getElementById("accountNumber")
+                        .value
+                        .trim(),
+
+                ifsc_code:
+                    document
+                        .getElementById("ifscCode")
+                        .value
+                        .trim(),
+
+                upi_number:
+                    document
+                        .getElementById("upiNumber")
+                        .value
+                        .trim(),
+
+                submitted_at:
+                    new Date().toLocaleString()
+
+            };
+
+
+            /* MOBILE VALIDATION */
+
+            if (
+                !/^[0-9]{10}$/.test(
+                    customer.mobile_number
+                )
+            ) {
+
+                showAdminMessage(
+                    "Please enter a valid 10 digit mobile number.",
+                    "red"
+                );
+
+                return;
+
+            }
+
+
+            /* AADHAAR VALIDATION */
+
+            if (
+                customer.aadhaar_last4 &&
+                !/^[0-9]{4}$/.test(
+                    customer.aadhaar_last4
+                )
+            ) {
+
+                showAdminMessage(
+                    "Aadhaar में केवल आखिरी 4 digits डालें.",
+                    "red"
+                );
+
+                return;
+
+            }
+
+
+            /* PAN VALIDATION */
+
+            if (
+                customer.pan_last4 &&
+                !/^[A-Za-z0-9]{4}$/.test(
+                    customer.pan_last4
+                )
+            ) {
+
+                showAdminMessage(
+                    "PAN में केवल आखिरी 4 characters डालें.",
+                    "red"
+                );
+
+                return;
+
+            }
+
+
+            /* PROGRESS VALIDATION */
+
+            if (
+                customer.percentage !== null &&
+                (
+                    Number(customer.percentage) < 0 ||
+                    Number(customer.percentage) > 100
+                )
+            ) {
+
+                showAdminMessage(
+                    "Progress 0 से 100 के बीच होना चाहिए.",
+                    "red"
+                );
+
+                return;
+
+            }
+
+
+            /* UPDATE */
+
+            if (editingCustomerId !== null) {
+
+                showAdminMessage(
+                    "Updating customer...",
+                    "#0757a8"
+                );
+
+
+                const success =
+                    await updateCustomer(
+                        editingCustomerId,
+                        customer
+                    );
+
+
+                if (!success) {
+
+                    showAdminMessage(
+                        "Customer update failed.",
+                        "red"
+                    );
+
+                    return;
+
+                }
+
+
+                showAdminMessage(
+                    "Customer details updated successfully.",
+                    "green"
+                );
+
+
+                editingCustomerId =
+                    null;
+
+
+                customerForm.reset();
+
+
+                setSubmitButton(
+                    "Submit Customer"
+                );
+
+
+                loadCustomers();
+
+
+                return;
+
+            }
+
+
+            /* NEW CUSTOMER */
+
+            showAdminMessage(
+                "Saving customer...",
+                "#0757a8"
+            );
+
+
+            const success =
+                await saveCustomer(
+                    customer
+                );
+
+
+            if (!success) {
+
+                showAdminMessage(
+                    "Customer save failed.",
+                    "red"
+                );
+
+                return;
+
+            }
+
+
+            showAdminMessage(
+                "Customer details saved successfully.",
+                "green"
+            );
+
+
+            customerForm.reset();
+
+
+            loadCustomers();
+
+        }
+    );
 
 }
 
@@ -315,86 +615,132 @@ function setSubmitButton(text) {
    EDIT CUSTOMER
 ========================================= */
 
-function editCustomer(index) {
+async function editCustomer(id) {
 
     const customers =
-        JSON.parse(
-            localStorage.getItem("relianceCustomers")
-        ) || [];
+        await getCustomers();
 
 
     const customer =
-        customers[index];
+        customers.find(
+            function (item) {
+
+                return Number(item.id) ===
+                    Number(id);
+
+            }
+        );
 
 
-    if (!customer) return;
+    if (!customer) {
+
+        showAdminMessage(
+            "Customer not found.",
+            "red"
+        );
+
+        return;
+
+    }
 
 
-    editingCustomerIndex =
-        index;
+    editingCustomerId =
+        customer.id;
 
 
-    document.getElementById("customerName").value =
-        customer.customerName || "";
+    document.getElementById(
+        "customerName"
+    ).value =
+        customer.customer_name || "";
 
 
-    document.getElementById("mobileNumber").value =
-        customer.mobileNumber || "";
+    document.getElementById(
+        "mobileNumber"
+    ).value =
+        customer.mobile_number || "";
 
 
-    document.getElementById("loanType").value =
-        customer.loanType || "";
+    document.getElementById(
+        "loanType"
+    ).value =
+        customer.loan_type || "";
 
 
-    document.getElementById("loanAmount").value =
-        customer.loanAmount || "";
+    document.getElementById(
+        "loanAmount"
+    ).value =
+        customer.loan_amount || "";
 
 
-    document.getElementById("aadhaarLast4").value =
-        customer.aadhaarLast4 || "";
+    document.getElementById(
+        "aadhaarLast4"
+    ).value =
+        customer.aadhaar_last4 || "";
 
 
-    document.getElementById("panLast4").value =
-        customer.panLast4 || "";
+    document.getElementById(
+        "panLast4"
+    ).value =
+        customer.pan_last4 || "";
 
 
-    document.getElementById("returnYear").value =
-        customer.returnYear || "";
+    document.getElementById(
+        "returnYear"
+    ).value =
+        customer.return_year || "";
 
 
-    document.getElementById("charge").value =
+    document.getElementById(
+        "charge"
+    ).value =
         customer.charge || "";
 
 
-    document.getElementById("chargeAmount").value =
-        customer.chargeAmount || "";
+    document.getElementById(
+        "chargeAmount"
+    ).value =
+        customer.charge_amount || "";
 
 
-    document.getElementById("percentage").value =
+    document.getElementById(
+        "percentage"
+    ).value =
         customer.percentage || "";
 
 
-    document.getElementById("bankName").value =
-        customer.bankName || "";
+    document.getElementById(
+        "bankName"
+    ).value =
+        customer.bank_name || "";
 
 
-    document.getElementById("accountHolderName").value =
-        customer.accountHolderName || "";
+    document.getElementById(
+        "accountHolderName"
+    ).value =
+        customer.account_holder_name || "";
 
 
-    document.getElementById("accountNumber").value =
-        customer.accountNumber || "";
+    document.getElementById(
+        "accountNumber"
+    ).value =
+        customer.account_number || "";
 
 
-    document.getElementById("ifscCode").value =
-        customer.ifscCode || "";
+    document.getElementById(
+        "ifscCode"
+    ).value =
+        customer.ifsc_code || "";
 
 
-    document.getElementById("upiNumber").value =
-        customer.upiNumber || "";
+    document.getElementById(
+        "upiNumber"
+    ).value =
+        customer.upi_number || "";
 
 
-    setSubmitButton("Update Customer");
+    setSubmitButton(
+        "Update Customer"
+    );
 
 
     window.scrollTo({
@@ -418,45 +764,50 @@ function editCustomer(index) {
    LOAD CUSTOMERS
 ========================================= */
 
-function loadCustomers() {
+async function loadCustomers() {
 
     const list =
-        document.getElementById("customerList");
+        document.getElementById(
+            "customerList"
+        );
 
 
-    if (!list) return;
+    if (!list) {
+        return;
+    }
+
+
+    list.innerHTML =
+        "<p>Loading customer data...</p>";
 
 
     const customers =
-        JSON.parse(
-            localStorage.getItem("relianceCustomers")
-        ) || [];
+        await getCustomers();
 
 
-    if (customers.length === 0) {
+    if (
+        !customers ||
+        customers.length === 0
+    ) {
 
         list.innerHTML =
             "<p>No customer data available.</p>";
 
         return;
+
     }
 
 
     list.innerHTML = "";
 
 
-    customers
-        .slice()
-        .reverse()
-        .forEach(function (customer, reverseIndex) {
-
-
-            const realIndex =
-                customers.length - 1 - reverseIndex;
-
+    customers.forEach(
+        function (customer) {
 
             const box =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             box.className =
@@ -467,92 +818,128 @@ function loadCustomers() {
 
                 <p>
                     <b>Customer:</b>
-                    ${customer.customerName || "-"}
+                    ${escapeHtml(
+                        customer.customer_name || "-"
+                    )}
                 </p>
 
                 <p>
                     <b>Mobile:</b>
-                    ${customer.mobileNumber || "-"}
+                    ${escapeHtml(
+                        customer.mobile_number || "-"
+                    )}
                 </p>
 
                 <p>
                     <b>Loan Type:</b>
-                    ${customer.loanType || "-"}
+                    ${escapeHtml(
+                        customer.loan_type || "-"
+                    )}
                 </p>
 
                 <p>
                     <b>Loan Amount:</b>
-                    ₹${customer.loanAmount || "0"}
+                    ₹${Number(
+                        customer.loan_amount || 0
+                    ).toLocaleString("en-IN")}
                 </p>
 
                 <p>
                     <b>Aadhaar:</b>
-                    ${maskAadhaar(customer.aadhaarLast4)}
+                    ${escapeHtml(
+                        maskAadhaar(
+                            customer.aadhaar_last4
+                        )
+                    )}
                 </p>
 
                 <p>
                     <b>PAN:</b>
-                    ${maskPan(customer.panLast4)}
+                    ${escapeHtml(
+                        maskPan(
+                            customer.pan_last4
+                        )
+                    )}
                 </p>
 
                 <p>
                     <b>Return Period:</b>
-                    ${customer.returnYear || "-"}
+                    ${escapeHtml(
+                        customer.return_year || "-"
+                    )}
                 </p>
 
                 <p>
                     <b>Charge:</b>
-                    ${customer.charge || "-"}
+                    ${escapeHtml(
+                        customer.charge || "-"
+                    )}
                 </p>
 
                 <p>
                     <b>Charge Amount:</b>
                     ₹${Number(
-                        customer.chargeAmount || 0
+                        customer.charge_amount || 0
                     ).toLocaleString("en-IN")}
                 </p>
 
                 <p>
                     <b>Application Progress:</b>
-                    ${customer.percentage || "0"}%
+                    ${Number(
+                        customer.percentage || 0
+                    )}%
                 </p>
 
                 <hr>
 
                 <p>
                     <b>Bank Name:</b>
-                    ${customer.bankName || "-"}
+                    ${escapeHtml(
+                        customer.bank_name || "-"
+                    )}
                 </p>
 
                 <p>
                     <b>Account Holder:</b>
-                    ${customer.accountHolderName || "-"}
+                    ${escapeHtml(
+                        customer.account_holder_name || "-"
+                    )}
                 </p>
 
                 <p>
                     <b>Account Number:</b>
-                    ${customer.accountNumber || "-"}
+                    ${escapeHtml(
+                        customer.account_number || "-"
+                    )}
                 </p>
 
                 <p>
                     <b>IFSC Code:</b>
-                    ${customer.ifscCode || "-"}
+                    ${escapeHtml(
+                        customer.ifsc_code || "-"
+                    )}
                 </p>
 
                 <p>
                     <b>UPI ID:</b>
-                    ${customer.upiNumber || "-"}
+                    ${escapeHtml(
+                        customer.upi_number || "-"
+                    )}
                 </p>
 
                 <p>
                     <b>Submitted:</b>
-                    ${customer.submittedAt || "-"}
+                    ${escapeHtml(
+                        customer.submitted_at || "-"
+                    )}
                 </p>
 
                 <button
                     type="button"
                     class="edit-customer-btn"
-                    onclick="editCustomer(${realIndex})"
+                    onclick="editCustomer(${Number(
+                        customer.id
+                    )})"
                 >
                     Edit Customer
                 </button>
@@ -562,10 +949,15 @@ function loadCustomers() {
 
             list.appendChild(box);
 
-        });
+        }
+    );
 
 }
 
+
+/* =========================================
+   INITIAL ADMIN LOAD
+========================================= */
 
 loadCustomers();
 
@@ -574,24 +966,39 @@ loadCustomers();
    CHECK STATUS
 ========================================= */
 
-function checkStatus() {
+async function checkStatus() {
 
     const mobileInput =
-        document.getElementById("mobileNumber");
+        document.getElementById(
+            "mobileNumber"
+        );
 
 
     const result =
-        document.getElementById("statusResult");
+        document.getElementById(
+            "statusResult"
+        );
 
 
-    if (!mobileInput || !result) return;
+    if (
+        !mobileInput ||
+        !result
+    ) {
+
+        return;
+
+    }
 
 
     const mobile =
         mobileInput.value.trim();
 
 
-    if (!/^[0-9]{10}$/.test(mobile)) {
+    if (
+        !/^[0-9]{10}$/.test(
+            mobile
+        )
+    ) {
 
         result.innerHTML = `
 
@@ -604,58 +1011,129 @@ function checkStatus() {
         `;
 
         return;
+
     }
 
 
-    const customers =
-        JSON.parse(
-            localStorage.getItem("relianceCustomers")
-        ) || [];
+    result.innerHTML = `
+
+        <p>
+
+            Checking application...
+
+        </p>
+
+    `;
 
 
-    const customer =
-        customers.find(function (item) {
+    try {
 
-            return item.mobileNumber === mobile;
+        const response =
+            await fetch(
+                SUPABASE_URL +
+                "/rest/v1/customers?select=*&mobile_number=eq." +
+                encodeURIComponent(mobile) +
+                "&limit=1",
+                {
+                    method: "GET",
+                    headers: SUPABASE_HEADERS
+                }
+            );
 
-        });
+
+        if (!response.ok) {
+
+            const errorText =
+                await response.text();
+
+            throw new Error(errorText);
+
+        }
 
 
-    if (!customer) {
+        const customers =
+            await response.json();
+
+
+        const customer =
+            customers[0];
+
+
+        if (!customer) {
+
+            result.innerHTML = `
+
+                <p class="status-error">
+
+                    No application found.
+
+                </p>
+
+            `;
+
+            return;
+
+        }
+
+
+        renderStatus(
+            customer,
+            result
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Status Error:",
+            error
+        );
+
 
         result.innerHTML = `
 
             <p class="status-error">
 
-                No application found.
+                Unable to load application status.
 
             </p>
 
         `;
 
-        return;
     }
 
+}
+
+
+/* =========================================
+   RENDER STATUS
+========================================= */
+
+function renderStatus(
+    customer,
+    result
+) {
 
     const percentage =
         Math.max(
             0,
             Math.min(
                 100,
-                Number(customer.percentage || 0)
+                Number(
+                    customer.percentage || 0
+                )
             )
         );
 
 
     const chargeAmount =
         Number(
-            customer.chargeAmount || 0
-        ).toLocaleString("en-IN");
+            customer.charge_amount || 0
+        ).toLocaleString(
+            "en-IN"
+        );
 
-
-    /* =====================================
-       PROFESSIONAL STATUS CARD
-    ===================================== */
 
     result.innerHTML = `
 
@@ -677,7 +1155,10 @@ function checkStatus() {
 
                     <h3>
 
-                        ${customer.customerName || "Customer"}
+                        ${escapeHtml(
+                            customer.customer_name ||
+                            "Customer"
+                        )}
 
                     </h3>
 
@@ -743,7 +1224,10 @@ function checkStatus() {
                 <div class="status-section-title">
 
                     Customer Name:
-                    ${customer.customerName || "Customer"}
+                    ${escapeHtml(
+                        customer.customer_name ||
+                        "Customer"
+                    )}
 
                 </div>
 
@@ -759,7 +1243,9 @@ function checkStatus() {
 
                     <b>
 
-                        ${customer.loanType || "-"}
+                        ${escapeHtml(
+                            customer.loan_type || "-"
+                        )}
 
                     </b>
 
@@ -778,7 +1264,7 @@ function checkStatus() {
                     <b>
 
                         ₹${Number(
-                            customer.loanAmount || 0
+                            customer.loan_amount || 0
                         ).toLocaleString("en-IN")}
 
                     </b>
@@ -797,7 +1283,9 @@ function checkStatus() {
 
                     <b>
 
-                        ${customer.mobileNumber || "-"}
+                        ${escapeHtml(
+                            customer.mobile_number || "-"
+                        )}
 
                     </b>
 
@@ -815,7 +1303,9 @@ function checkStatus() {
 
                     <b>
 
-                        ${customer.returnYear || "-"}
+                        ${escapeHtml(
+                            customer.return_year || "-"
+                        )}
 
                     </b>
 
@@ -849,7 +1339,9 @@ function checkStatus() {
 
                     <b>
 
-                        ${customer.charge || "-"}
+                        ${escapeHtml(
+                            customer.charge || "-"
+                        )}
 
                     </b>
 
@@ -882,14 +1374,21 @@ function checkStatus() {
 
                     <strong>
 
-                        ${customer.charge || "Charge Information"}
+                        ${escapeHtml(
+                            customer.charge ||
+                            "Charge Information"
+                        )}
 
                     </strong>
 
 
                     <p>
 
-                        ${getChargeDescription(customer.charge)}
+                        ${escapeHtml(
+                            getChargeDescription(
+                                customer.charge
+                            )
+                        )}
 
                     </p>
 
@@ -924,7 +1423,11 @@ function checkStatus() {
 
                     <b>
 
-                        ${maskAadhaar(customer.aadhaarLast4)}
+                        ${escapeHtml(
+                            maskAadhaar(
+                                customer.aadhaar_last4
+                            )
+                        )}
 
                     </b>
 
@@ -944,7 +1447,11 @@ function checkStatus() {
 
                     <b>
 
-                        ${maskPan(customer.panLast4)}
+                        ${escapeHtml(
+                            maskPan(
+                                customer.pan_last4
+                            )
+                        )}
 
                     </b>
 
@@ -979,7 +1486,9 @@ function checkStatus() {
 
                     <b>
 
-                        ${customer.bankName || "-"}
+                        ${escapeHtml(
+                            customer.bank_name || "-"
+                        )}
 
                     </b>
 
@@ -999,7 +1508,10 @@ function checkStatus() {
 
                     <b>
 
-                        ${customer.accountHolderName || "-"}
+                        ${escapeHtml(
+                            customer.account_holder_name ||
+                            "-"
+                        )}
 
                     </b>
 
@@ -1019,7 +1531,10 @@ function checkStatus() {
 
                     <b>
 
-                        ${customer.accountNumber || "-"}
+                        ${escapeHtml(
+                            customer.account_number ||
+                            "-"
+                        )}
 
                     </b>
 
@@ -1039,7 +1554,10 @@ function checkStatus() {
 
                     <b>
 
-                        ${customer.ifscCode || "-"}
+                        ${escapeHtml(
+                            customer.ifsc_code ||
+                            "-"
+                        )}
 
                     </b>
 
@@ -1059,7 +1577,10 @@ function checkStatus() {
 
                     <b>
 
-                        ${customer.upiNumber || "-"}
+                        ${escapeHtml(
+                            customer.upi_number ||
+                            "-"
+                        )}
 
                     </b>
 
@@ -1111,14 +1632,21 @@ function checkStatus() {
 ========================================= */
 
 const menuBtn =
-    document.getElementById("menuBtn");
+    document.getElementById(
+        "menuBtn"
+    );
 
 
 const mainNav =
-    document.getElementById("mainNav");
+    document.getElementById(
+        "mainNav"
+    );
 
 
-if (menuBtn && mainNav) {
+if (
+    menuBtn &&
+    mainNav
+) {
 
 
     menuBtn.addEventListener(
@@ -1134,7 +1662,9 @@ if (menuBtn && mainNav) {
 
 
     const menuLinks =
-        mainNav.querySelectorAll("a");
+        mainNav.querySelectorAll(
+            "a"
+        );
 
 
     menuLinks.forEach(
