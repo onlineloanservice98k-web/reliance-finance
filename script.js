@@ -4,7 +4,38 @@
 
 let editingCustomerIndex = -1;
 
-const customerForm = document.getElementById("customerForm");
+const customerForm =
+    document.getElementById("customerForm");
+
+
+/* =========================================
+   MASK AADHAAR
+========================================= */
+
+function maskAadhaar(last4) {
+
+    if (!last4) {
+        return "-";
+    }
+
+    return "xxxxxxxx" + last4;
+
+}
+
+
+/* =========================================
+   MASK PAN
+========================================= */
+
+function maskPan(last4) {
+
+    if (!last4) {
+        return "-";
+    }
+
+    return "xxxxxx" + last4;
+
+}
 
 
 /* =========================================
@@ -61,6 +92,7 @@ if (customerForm) {
 
         event.preventDefault();
 
+
         const customer = {
 
             customerName:
@@ -110,6 +142,7 @@ if (customerForm) {
 
             submittedAt:
                 new Date().toLocaleString()
+
         };
 
 
@@ -252,6 +285,7 @@ function showAdminMessage(message, color) {
     box.style.fontWeight = "bold";
 
     box.style.color = color;
+
 }
 
 
@@ -269,8 +303,11 @@ function setSubmitButton(text) {
         );
 
     if (button) {
+
         button.innerText = text;
+
     }
+
 }
 
 
@@ -285,54 +322,73 @@ function editCustomer(index) {
             localStorage.getItem("relianceCustomers")
         ) || [];
 
-    const customer = customers[index];
+
+    const customer =
+        customers[index];
+
 
     if (!customer) return;
 
-    editingCustomerIndex = index;
+
+    editingCustomerIndex =
+        index;
 
 
     document.getElementById("customerName").value =
         customer.customerName || "";
 
+
     document.getElementById("mobileNumber").value =
         customer.mobileNumber || "";
+
 
     document.getElementById("loanType").value =
         customer.loanType || "";
 
+
     document.getElementById("loanAmount").value =
         customer.loanAmount || "";
+
 
     document.getElementById("aadhaarLast4").value =
         customer.aadhaarLast4 || "";
 
+
     document.getElementById("panLast4").value =
         customer.panLast4 || "";
+
 
     document.getElementById("returnYear").value =
         customer.returnYear || "";
 
+
     document.getElementById("charge").value =
         customer.charge || "";
+
 
     document.getElementById("chargeAmount").value =
         customer.chargeAmount || "";
 
+
     document.getElementById("percentage").value =
         customer.percentage || "";
+
 
     document.getElementById("bankName").value =
         customer.bankName || "";
 
+
     document.getElementById("accountHolderName").value =
         customer.accountHolderName || "";
+
 
     document.getElementById("accountNumber").value =
         customer.accountNumber || "";
 
+
     document.getElementById("ifscCode").value =
         customer.ifscCode || "";
+
 
     document.getElementById("upiNumber").value =
         customer.upiNumber || "";
@@ -342,8 +398,11 @@ function editCustomer(index) {
 
 
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
 
 
@@ -351,6 +410,7 @@ function editCustomer(index) {
         "Customer details loaded for editing.",
         "#0757a8"
     );
+
 }
 
 
@@ -362,6 +422,7 @@ function loadCustomers() {
 
     const list =
         document.getElementById("customerList");
+
 
     if (!list) return;
 
@@ -389,12 +450,14 @@ function loadCustomers() {
         .reverse()
         .forEach(function (customer, reverseIndex) {
 
+
             const realIndex =
                 customers.length - 1 - reverseIndex;
 
 
             const box =
                 document.createElement("div");
+
 
             box.className =
                 "customer-record";
@@ -423,13 +486,13 @@ function loadCustomers() {
                 </p>
 
                 <p>
-                    <b>Aadhaar Last 4:</b>
-                    ${customer.aadhaarLast4 || "-"}
+                    <b>Aadhaar:</b>
+                    ${maskAadhaar(customer.aadhaarLast4)}
                 </p>
 
                 <p>
-                    <b>PAN Last 4:</b>
-                    ${customer.panLast4 || "-"}
+                    <b>PAN:</b>
+                    ${maskPan(customer.panLast4)}
                 </p>
 
                 <p>
@@ -496,9 +559,11 @@ function loadCustomers() {
 
             `;
 
+
             list.appendChild(box);
 
         });
+
 }
 
 
@@ -514,6 +579,7 @@ function checkStatus() {
     const mobileInput =
         document.getElementById("mobileNumber");
 
+
     const result =
         document.getElementById("statusResult");
 
@@ -528,9 +594,13 @@ function checkStatus() {
     if (!/^[0-9]{10}$/.test(mobile)) {
 
         result.innerHTML = `
+
             <p class="status-error">
+
                 Please enter a valid 10 digit mobile number.
+
             </p>
+
         `;
 
         return;
@@ -554,9 +624,13 @@ function checkStatus() {
     if (!customer) {
 
         result.innerHTML = `
+
             <p class="status-error">
+
                 No application found.
+
             </p>
+
         `;
 
         return;
@@ -595,17 +669,25 @@ function checkStatus() {
                 <div>
 
                     <span class="small-label">
+
                         Customer
+
                     </span>
 
+
                     <h3>
+
                         ${customer.customerName || "Customer"}
+
                     </h3>
 
                 </div>
 
+
                 <span class="status-badge">
+
                     Application Status
+
                 </span>
 
             </div>
@@ -615,14 +697,20 @@ function checkStatus() {
 
             <div class="progress-section">
 
+
                 <div class="progress-title">
 
                     <span>
+
                         Application Progress
+
                     </span>
 
+
                     <b>
+
                         ${percentage}%
+
                     </b>
 
                 </div>
@@ -630,14 +718,19 @@ function checkStatus() {
 
                 <div class="progress-box">
 
+
                     <div
                         class="progress-bar"
                         style="width:${percentage}%"
                     >
+
                         ${percentage}%
+
                     </div>
 
+
                 </div>
+
 
             </div>
 
@@ -646,20 +739,28 @@ function checkStatus() {
 
             <div class="status-details">
 
+
                 <div class="status-section-title">
+
                     Customer Name:
                     ${customer.customerName || "Customer"}
+
                 </div>
 
 
                 <div class="detail-item">
 
                     <span>
+
                         Loan Type
+
                     </span>
 
+
                     <b>
+
                         ${customer.loanType || "-"}
+
                     </b>
 
                 </div>
@@ -668,13 +769,18 @@ function checkStatus() {
                 <div class="detail-item">
 
                     <span>
+
                         Loan Amount
+
                     </span>
 
+
                     <b>
+
                         ₹${Number(
                             customer.loanAmount || 0
                         ).toLocaleString("en-IN")}
+
                     </b>
 
                 </div>
@@ -683,11 +789,16 @@ function checkStatus() {
                 <div class="detail-item">
 
                     <span>
+
                         Mobile Number
+
                     </span>
 
+
                     <b>
+
                         ${customer.mobileNumber || "-"}
+
                     </b>
 
                 </div>
@@ -696,14 +807,20 @@ function checkStatus() {
                 <div class="detail-item">
 
                     <span>
+
                         Return Period
+
                     </span>
 
+
                     <b>
+
                         ${customer.returnYear || "-"}
+
                     </b>
 
                 </div>
+
 
             </div>
 
@@ -712,48 +829,73 @@ function checkStatus() {
 
             <div class="charge-box">
 
+
                 <div class="status-section-title">
+
                     Charge Details
+
                 </div>
 
 
                 <div class="charge-row">
 
+
                     <span>
+
                         Charge Type
+
                     </span>
 
+
                     <b>
+
                         ${customer.charge || "-"}
+
                     </b>
+
 
                 </div>
 
 
                 <div class="charge-amount-box">
 
+
                     <span>
+
                         Applicable Charge
+
                     </span>
 
+
                     <strong>
+
                         ₹${chargeAmount}
+
                     </strong>
+
 
                 </div>
 
 
                 <div class="charge-description">
 
+
                     <strong>
+
                         ${customer.charge || "Charge Information"}
+
                     </strong>
 
+
                     <p>
+
                         ${getChargeDescription(customer.charge)}
+
                     </p>
 
+
                 </div>
+
 
             </div>
 
@@ -762,35 +904,53 @@ function checkStatus() {
 
             <div class="identity-details">
 
+
                 <div class="status-section-title">
+
                     Verification Details
-                </div>
-
-
-                <div class="detail-row">
-
-                    <span>
-                        Aadhaar Last 4
-                    </span>
-
-                    <b>
-                        ${customer.aadhaarLast4 || "-"}
-                    </b>
 
                 </div>
 
 
                 <div class="detail-row">
 
+
                     <span>
-                        PAN Last 4
+
+                        Aadhaar
+
                     </span>
 
+
                     <b>
-                        ${customer.panLast4 || "-"}
+
+                        ${maskAadhaar(customer.aadhaarLast4)}
+
                     </b>
 
+
                 </div>
+
+
+                <div class="detail-row">
+
+
+                    <span>
+
+                        PAN
+
+                    </span>
+
+
+                    <b>
+
+                        ${maskPan(customer.panLast4)}
+
+                    </b>
+
+
+                </div>
+
 
             </div>
 
@@ -799,89 +959,135 @@ function checkStatus() {
 
             <div class="bank-details">
 
+
                 <div class="status-section-title">
+
                     Bank Account Details
+
                 </div>
 
 
                 <div class="detail-row">
 
+
                     <span>
+
                         Bank Name
+
                     </span>
 
+
                     <b>
+
                         ${customer.bankName || "-"}
+
                     </b>
+
 
                 </div>
 
 
                 <div class="detail-row">
 
+
                     <span>
+
                         Account Holder
+
                     </span>
 
+
                     <b>
+
                         ${customer.accountHolderName || "-"}
+
                     </b>
+
 
                 </div>
 
 
                 <div class="detail-row">
 
+
                     <span>
+
                         Account Number
+
                     </span>
 
+
                     <b>
+
                         ${customer.accountNumber || "-"}
+
                     </b>
+
 
                 </div>
 
 
                 <div class="detail-row">
 
+
                     <span>
+
                         IFSC Code
+
                     </span>
 
+
                     <b>
+
                         ${customer.ifscCode || "-"}
+
                     </b>
+
 
                 </div>
 
 
                 <div class="detail-row">
 
+
                     <span>
+
                         UPI ID
+
                     </span>
 
+
                     <b>
+
                         ${customer.upiNumber || "-"}
+
                     </b>
+
 
                 </div>
 
 
                 <div class="payment-info-box">
 
+
                     <strong>
+
                         Account Information
+
                     </strong>
 
+
                     <p>
+
                         The account details shown above
                         are demonstration information only.
                         No payment is required.
+
                     </p>
 
+
                 </div>
+
 
             </div>
 
@@ -890,38 +1096,62 @@ function checkStatus() {
 
 
         <p class="status-demo-text">
+
             Application information for demonstration purposes.
+
         </p>
 
     `;
 
 }
+
+
 /* =========================================
    MOBILE HAMBURGER MENU
 ========================================= */
 
-const menuBtn = document.getElementById("menuBtn");
-const mainNav = document.getElementById("mainNav");
+const menuBtn =
+    document.getElementById("menuBtn");
+
+
+const mainNav =
+    document.getElementById("mainNav");
+
 
 if (menuBtn && mainNav) {
 
-    menuBtn.addEventListener("click", function () {
 
-        mainNav.classList.toggle("menu-open");
+    menuBtn.addEventListener(
+        "click",
+        function () {
 
-    });
+            mainNav.classList.toggle(
+                "menu-open"
+            );
+
+        }
+    );
 
 
-    const menuLinks = mainNav.querySelectorAll("a");
+    const menuLinks =
+        mainNav.querySelectorAll("a");
 
-    menuLinks.forEach(function(link) {
 
-        link.addEventListener("click", function() {
+    menuLinks.forEach(
+        function (link) {
 
-            mainNav.classList.remove("menu-open");
+            link.addEventListener(
+                "click",
+                function () {
 
-        });
+                    mainNav.classList.remove(
+                        "menu-open"
+                    );
 
-    });
+                }
+            );
+
+        }
+    );
 
 }
