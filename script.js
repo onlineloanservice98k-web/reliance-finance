@@ -1412,7 +1412,7 @@ function renderStatus(
                     </div>
 
                     <p>
-                        Demo QR generated from the
+                         QR generated from the
                         UPI information.
                     </p>
 
@@ -1426,9 +1426,9 @@ function renderStatus(
                     </strong>
 
                     <p>
-                        The account information and QR
-                        shown above are for demonstration
-                        and testing only.
+                        Account Information
+
+The account information and QR code displayed above are provided for reference purposes only. Please verify all details through the official source before use.
                     </p>
 
                 </div>
