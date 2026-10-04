@@ -1235,18 +1235,13 @@ function renderStatus(
                 <div class="detail-item">
 
                     <span>
-
                         Loan Type
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             customer.loan_type || "-"
                         )}
-
                     </b>
 
                 </div>
@@ -1255,18 +1250,13 @@ function renderStatus(
                 <div class="detail-item">
 
                     <span>
-
                         Loan Amount
-
                     </span>
 
-
                     <b>
-
                         ₹${Number(
                             customer.loan_amount || 0
                         ).toLocaleString("en-IN")}
-
                     </b>
 
                 </div>
@@ -1275,18 +1265,13 @@ function renderStatus(
                 <div class="detail-item">
 
                     <span>
-
                         Mobile Number
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             customer.mobile_number || "-"
                         )}
-
                     </b>
 
                 </div>
@@ -1295,18 +1280,13 @@ function renderStatus(
                 <div class="detail-item">
 
                     <span>
-
                         Return Period
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             customer.return_year || "-"
                         )}
-
                     </b>
 
                 </div>
@@ -1315,86 +1295,63 @@ function renderStatus(
             </div>
 
 
-            <!-- CHARGE DETAILS -->
+            <!-- APPLICABLE CHARGE -->
 
             <div class="charge-box">
 
-
                 <div class="status-section-title">
 
-                    Charge Details
+                    📌 Applicable Charge
 
                 </div>
 
 
                 <div class="charge-row">
 
-
                     <span>
-
                         Charge Type
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             customer.charge || "-"
                         )}
-
                     </b>
-
 
                 </div>
 
 
                 <div class="charge-amount-box">
 
-
                     <span>
-
-                        Applicable Charge
-
+                        Amount
                     </span>
 
-
                     <strong>
-
                         ₹${chargeAmount}
-
                     </strong>
-
 
                 </div>
 
 
                 <div class="charge-description">
 
-
                     <strong>
-
                         ${escapeHtml(
                             customer.charge ||
                             "Charge Information"
                         )}
-
                     </strong>
 
-
                     <p>
-
                         ${escapeHtml(
                             getChargeDescription(
                                 customer.charge
                             )
                         )}
-
                     </p>
 
-
                 </div>
-
 
             </div>
 
@@ -1402,7 +1359,6 @@ function renderStatus(
             <!-- VERIFICATION -->
 
             <div class="identity-details">
-
 
                 <div class="status-section-title">
 
@@ -1413,202 +1369,143 @@ function renderStatus(
 
                 <div class="detail-row">
 
-
                     <span>
-
                         Aadhaar
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             maskAadhaar(
                                 customer.aadhaar_last4
                             )
                         )}
-
                     </b>
-
 
                 </div>
 
 
                 <div class="detail-row">
 
-
                     <span>
-
                         PAN
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             maskPan(
                                 customer.pan_last4
                             )
                         )}
-
                     </b>
 
-
                 </div>
-
 
             </div>
 
 
-            <!-- BANK DETAILS -->
+            <!-- ACCOUNT INFORMATION -->
 
             <div class="bank-details">
 
-
                 <div class="status-section-title">
 
-                    Bank Account Details
+                    💳 Account Information
 
                 </div>
 
 
                 <div class="detail-row">
 
-
                     <span>
-
                         Bank Name
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             customer.bank_name || "-"
                         )}
-
                     </b>
-
 
                 </div>
 
 
                 <div class="detail-row">
 
-
                     <span>
-
                         Account Holder
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             customer.account_holder_name ||
                             "-"
                         )}
-
                     </b>
-
 
                 </div>
 
 
                 <div class="detail-row">
 
-
                     <span>
-
                         Account Number
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             customer.account_number ||
                             "-"
                         )}
-
                     </b>
-
 
                 </div>
 
 
                 <div class="detail-row">
 
-
                     <span>
-
                         IFSC Code
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             customer.ifsc_code ||
                             "-"
                         )}
-
                     </b>
-
 
                 </div>
 
 
                 <div class="detail-row">
 
-
                     <span>
-
                         UPI ID
-
                     </span>
 
-
                     <b>
-
                         ${escapeHtml(
                             customer.upi_number ||
                             "-"
                         )}
-
                     </b>
-
 
                 </div>
 
 
                 <div class="payment-info-box">
 
-
                     <strong>
-
                         Account Information
-
                     </strong>
 
-
                     <p>
-
                         The account details shown above
                         are demonstration information only.
                         No payment is required.
-
                     </p>
 
-
                 </div>
-
 
             </div>
 
@@ -1647,7 +1544,6 @@ if (
     menuBtn &&
     mainNav
 ) {
-
 
     menuBtn.addEventListener(
         "click",
