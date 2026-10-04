@@ -188,7 +188,7 @@ function setSubmitButton(text) {
 
 
 /* =========================================
-   GET CUSTOMERS FROM SUPABASE
+   GET CUSTOMERS
 ========================================= */
 
 async function getCustomers() {
@@ -235,7 +235,7 @@ async function getCustomers() {
 
 
 /* =========================================
-   SAVE CUSTOMER TO SUPABASE
+   SAVE CUSTOMER
 ========================================= */
 
 async function saveCustomer(customer) {
@@ -283,7 +283,7 @@ async function saveCustomer(customer) {
 
 
 /* =========================================
-   UPDATE CUSTOMER IN SUPABASE
+   UPDATE CUSTOMER
 ========================================= */
 
 async function updateCustomer(id, customer) {
@@ -437,8 +437,6 @@ if (customerForm) {
             };
 
 
-            /* MOBILE VALIDATION */
-
             if (
                 !/^[0-9]{10}$/.test(
                     customer.mobile_number
@@ -454,8 +452,6 @@ if (customerForm) {
 
             }
 
-
-            /* AADHAAR VALIDATION */
 
             if (
                 customer.aadhaar_last4 &&
@@ -474,8 +470,6 @@ if (customerForm) {
             }
 
 
-            /* PAN VALIDATION */
-
             if (
                 customer.pan_last4 &&
                 !/^[A-Za-z0-9]{4}$/.test(
@@ -492,8 +486,6 @@ if (customerForm) {
 
             }
 
-
-            /* PROGRESS VALIDATION */
 
             if (
                 customer.percentage !== null &&
@@ -512,8 +504,6 @@ if (customerForm) {
 
             }
 
-
-            /* UPDATE */
 
             if (editingCustomerId !== null) {
 
@@ -562,13 +552,10 @@ if (customerForm) {
 
                 loadCustomers();
 
-
                 return;
 
             }
 
-
-            /* NEW CUSTOMER */
 
             showAdminMessage(
                 "Saving customer...",
@@ -601,7 +588,6 @@ if (customerForm) {
 
 
             customerForm.reset();
-
 
             loadCustomers();
 
@@ -648,93 +634,49 @@ async function editCustomer(id) {
         customer.id;
 
 
-    document.getElementById(
-        "customerName"
-    ).value =
+    document.getElementById("customerName").value =
         customer.customer_name || "";
 
-
-    document.getElementById(
-        "mobileNumber"
-    ).value =
+    document.getElementById("mobileNumber").value =
         customer.mobile_number || "";
 
-
-    document.getElementById(
-        "loanType"
-    ).value =
+    document.getElementById("loanType").value =
         customer.loan_type || "";
 
-
-    document.getElementById(
-        "loanAmount"
-    ).value =
+    document.getElementById("loanAmount").value =
         customer.loan_amount || "";
 
-
-    document.getElementById(
-        "aadhaarLast4"
-    ).value =
+    document.getElementById("aadhaarLast4").value =
         customer.aadhaar_last4 || "";
 
-
-    document.getElementById(
-        "panLast4"
-    ).value =
+    document.getElementById("panLast4").value =
         customer.pan_last4 || "";
 
-
-    document.getElementById(
-        "returnYear"
-    ).value =
+    document.getElementById("returnYear").value =
         customer.return_year || "";
 
-
-    document.getElementById(
-        "charge"
-    ).value =
+    document.getElementById("charge").value =
         customer.charge || "";
 
-
-    document.getElementById(
-        "chargeAmount"
-    ).value =
+    document.getElementById("chargeAmount").value =
         customer.charge_amount || "";
 
-
-    document.getElementById(
-        "percentage"
-    ).value =
+    document.getElementById("percentage").value =
         customer.percentage || "";
 
-
-    document.getElementById(
-        "bankName"
-    ).value =
+    document.getElementById("bankName").value =
         customer.bank_name || "";
 
-
-    document.getElementById(
-        "accountHolderName"
-    ).value =
+    document.getElementById("accountHolderName").value =
         customer.account_holder_name || "";
 
-
-    document.getElementById(
-        "accountNumber"
-    ).value =
+    document.getElementById("accountNumber").value =
         customer.account_number || "";
 
-
-    document.getElementById(
-        "ifscCode"
-    ).value =
+    document.getElementById("ifscCode").value =
         customer.ifsc_code || "";
 
-
-    document.getElementById(
-        "upiNumber"
-    ).value =
+    document.getElementById("upiNumber").value =
         customer.upi_number || "";
 
 
@@ -744,11 +686,8 @@ async function editCustomer(id) {
 
 
     window.scrollTo({
-
         top: 0,
-
         behavior: "smooth"
-
     });
 
 
@@ -805,9 +744,7 @@ async function loadCustomers() {
         function (customer) {
 
             const box =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             box.className =
@@ -939,9 +876,10 @@ async function loadCustomers() {
                     class="edit-customer-btn"
                     onclick="editCustomer(${Number(
                         customer.id
-                    )})"
-                >
+                    )})">
+
                     Edit Customer
+
                 </button>
 
             `;
@@ -1018,9 +956,7 @@ async function checkStatus() {
     result.innerHTML = `
 
         <p>
-
             Checking application...
-
         </p>
 
     `;
@@ -1130,68 +1066,47 @@ function renderStatus(
     const chargeAmount =
         Number(
             customer.charge_amount || 0
-        ).toLocaleString(
-            "en-IN"
-        );
+        ).toLocaleString("en-IN");
 
 
     result.innerHTML = `
 
         <div class="status-card">
 
-
-            <!-- HEADER -->
-
             <div class="status-header">
 
                 <div>
 
                     <span class="small-label">
-
                         Customer
-
                     </span>
 
-
                     <h3>
-
                         ${escapeHtml(
                             customer.customer_name ||
                             "Customer"
                         )}
-
                     </h3>
 
                 </div>
 
-
                 <span class="status-badge">
-
                     Application Status
-
                 </span>
 
             </div>
 
 
-            <!-- PROGRESS -->
-
             <div class="progress-section">
-
 
                 <div class="progress-title">
 
                     <span>
-
                         Application Progress
-
                     </span>
 
-
                     <b>
-
                         ${percentage}%
-
                     </b>
 
                 </div>
@@ -1199,27 +1114,20 @@ function renderStatus(
 
                 <div class="progress-box">
 
-
                     <div
                         class="progress-bar"
-                        style="width:${percentage}%"
-                    >
+                        style="width:${percentage}%">
 
                         ${percentage}%
 
                     </div>
 
-
                 </div>
-
 
             </div>
 
 
-            <!-- CUSTOMER DETAILS -->
-
             <div class="status-details">
-
 
                 <div class="status-section-title">
 
@@ -1291,7 +1199,6 @@ function renderStatus(
 
                 </div>
 
-
             </div>
 
 
@@ -1361,9 +1268,7 @@ function renderStatus(
             <div class="identity-details">
 
                 <div class="status-section-title">
-
                     Verification Details
-
                 </div>
 
 
@@ -1493,6 +1398,27 @@ function renderStatus(
                 </div>
 
 
+                <!-- DEMO QR -->
+
+                <div class="demo-qr-section">
+
+                    <h3>
+                        📱 UPI QR
+                    </h3>
+
+                    <div
+                        id="upiQrCode"
+                        class="upi-qr-code">
+                    </div>
+
+                    <p>
+                        Demo QR generated from the
+                        UPI information.
+                    </p>
+
+                </div>
+
+
                 <div class="payment-info-box">
 
                     <strong>
@@ -1500,26 +1426,62 @@ function renderStatus(
                     </strong>
 
                     <p>
-                        The account details shown above
-                        are demonstration information only.
-                        No payment is required.
+                        The account information and QR
+                        shown above are for demonstration
+                        and testing only.
                     </p>
 
                 </div>
 
             </div>
 
-
         </div>
 
 
         <p class="status-demo-text">
 
-            Application information for demonstration purposes.
+            Application information for
+            demonstration purposes.
 
         </p>
 
     `;
+
+
+    /* =========================================
+       GENERATE DEMO QR
+    ========================================= */
+
+    const qrBox =
+        document.getElementById(
+            "upiQrCode"
+        );
+
+
+    if (
+        qrBox &&
+        customer.upi_number &&
+        typeof QRCode !== "undefined"
+    ) {
+
+        qrBox.innerHTML = "";
+
+
+        new QRCode(
+            qrBox,
+            {
+                text:
+                    String(
+                        customer.upi_number
+                    ),
+
+                width: 180,
+
+                height: 180
+            }
+        );
+
+    }
 
 }
 
